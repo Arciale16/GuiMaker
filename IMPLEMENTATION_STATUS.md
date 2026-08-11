@@ -1,7 +1,7 @@
-# ZartraGUI action-pipeline verification
+# ZartraGUI Goal 2 status
 
-Implemented and verified in source/tests: persisted ordered `ActionEntry` lists for LEFT, RIGHT, SHIFT_LEFT, SHIFT_RIGHT, MIDDLE and NUMBER_KEY; v1 single-action migration with a `.pre-action-migration.bak` copy; registry-backed action dispatch; main-thread chaining with per-action delay and WAIT; chance, enabled, stop-on-failure, cooldown, disconnect, recursion and double-click safeguards; and the in-game list/detail action editor.
+## Checkpoint 1 — conditions and variables
 
-The obsolete `MenuItem.action` value is a load-only migration bridge. It is cleared before runtime dispatch and v2 saving.
+Implemented and tested: complete condition registry identifiers/metadata, condition AND/OR execution, per-condition enabled/inverted/failure metadata, condition YAML persistence, safe malformed-condition handling, persistent global and UUID-player variables, nonpersistent temporary/session scopes, deterministic `%var:SCOPE:key%` placeholders, and SET/ADD/REMOVE/TOGGLE variable actions through the existing action registry.
 
-The automated acceptance test creates two ordered actions, saves the menu, reloads it, and executes the reloaded list in order through `ActionExecutor`. Physical inventory interaction remains the only verification requiring a connected Minecraft client.
+Still in progress: condition/item/menu editor screens, Vault-backed conditions/actions, advanced menu/item settings, pagination, editor history, and final Goal 2 verification.

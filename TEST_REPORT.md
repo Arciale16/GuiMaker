@@ -1,11 +1,7 @@
 # Test report
 
-Clean compilation: Java 21 `javac --release 8` against Spigot API 1.8.8. Produced classes are major version 52.
+## Goal 2 checkpoint 1
 
-Automated suite: 24 JUnit tests passed. It covers legacy action migration/backup, deterministic YAML round-trip for all six click types, acceptance save/reload/ordered dispatch, direct runtime sequencing with delay and WAIT, stop-on-failure, disabled actions, OP restoration, placeholder expansion, cooldown keys, click mapping and double-click protection, action parsing, invalid chance/server-name rejection, malformed action isolation, duplicate identity, lore/material compatibility, pagination, and variables.
+Java 8-target clean compile and all 29 tests passed. The suite retains the 24 verified action-pipeline tests and adds deterministic condition registry/model/YAML and variable scope/action tests.
 
-Final runtime startup smoke tests passed:
-- PaperSpigot 1.8.8 build 445 on Temurin Java 8u502: plugin enabled and server reached `Done`.
-- Paper 1.21.11 build 130 on Temurin Java 21.0.12: Paper remapped the legacy plugin, plugin enabled, and server reached `Done`.
-
-Live PaperSpigot console verification also executed `zgui version`, `zartragui version`, `guimaker version`, `zgui create actionaccept`, and `zgui save` successfully. A connected Minecraft client is only required to physically operate the inventory GUI; all non-client action persistence and dispatch behavior is covered above.
+Implemented runtime behavior is verified for ordered condition metadata persistence and variable action parsing/scopes. In-game condition editing, Vault, advanced editor controls, pagination, and history are not yet implemented and are intentionally not claimed as verified.
