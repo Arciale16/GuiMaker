@@ -1,0 +1,4 @@
+package net.zartra.gui;
+import org.bukkit.configuration.file.YamlConfiguration;
+import java.io.*;
+final class VariableStorage { private final File file; VariableStorage(File file){this.file=file;} void load(VariableStore store){if(!file.exists())return;YamlConfiguration y=YamlConfiguration.loadConfiguration(file);for(String key:y.getConfigurationSection("global")==null?java.util.Collections.<String>emptySet():y.getConfigurationSection("global").getKeys(false))store.setGlobal(key,y.getString("global."+key));} void save(VariableStore store)throws IOException{YamlConfiguration y=new YamlConfiguration();for(java.util.Map.Entry<String,String> e:store.globals().entrySet())y.set("global."+e.getKey(),e.getValue());File tmp=new File(file.getParentFile(),file.getName()+".tmp");y.save(tmp);if(file.exists()&&!file.delete())throw new IOException("replace failed");if(!tmp.renameTo(file))throw new IOException("rename failed");} }

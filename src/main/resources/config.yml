@@ -1,0 +1,6 @@
+chat-input-timeout-seconds: 60
+default-language: en
+max-actions-per-item: 32
+max-action-chain-depth: 64
+max-lore-lines: 100
+minimum-refresh-interval: 20

@@ -1,0 +1,3 @@
+package net.zartra.gui;
+import java.util.*;
+final class MenuDefinition { final String id; String title; int rows; String openingCommand=""; String openingPermission=""; String permissionDenied="&cYou cannot open this menu."; String openingSound=""; String closingSound=""; long refreshInterval; boolean closeAfterAction; long createdAt=System.currentTimeMillis(); long modifiedAt=System.currentTimeMillis(); int formatVersion=2; final Map<Integer,MenuItem> items=new HashMap<Integer,MenuItem>(); MenuDefinition(String id,String title,int rows){this.id=id;this.title=title;this.rows=validRows(rows);} static int validRows(int rows){return Math.max(1,Math.min(6,rows));} }

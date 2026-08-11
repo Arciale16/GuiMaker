@@ -1,0 +1,10 @@
+package net.zartra.gui;
+import org.bukkit.*; import org.bukkit.entity.Player; import org.bukkit.inventory.*; import java.io.*; import java.util.*;
+public final class MenuManager {
+ private final Map<String,MenuDefinition> menus=new TreeMap<String,MenuDefinition>(); private final MenuStorage storage; public MenuManager(MenuStorage s){storage=s;menus.putAll(s.load());}
+ public static boolean validId(String s){return s!=null&&s.matches("[a-z0-9_-]{1,32}")&&!s.contains("..");} public MenuDefinition get(String id){return menus.get(id.toLowerCase());} public Collection<MenuDefinition> all(){return menus.values();}
+ public MenuDefinition create(String id){id=id.toLowerCase();MenuDefinition d=new MenuDefinition(id,id,3);menus.put(id,d);return d;} public boolean delete(String id){menus.remove(id);return storage.delete(id);} public void save(MenuDefinition d)throws IOException{storage.save(d);} public void saveAll()throws IOException{for(MenuDefinition d:menus.values())storage.save(d);}
+ public void open(Player p,MenuDefinition d){Inventory inv=Bukkit.createInventory(new MenuHolder(d.id(),false),d.rows()*9,Chat.color(d.title()));for(Map.Entry<Integer,MenuItemDefinition> e:d.items().entrySet())inv.setItem(e.getKey(),e.getValue().item());p.openInventory(inv);}
+ public void action(Player p,MenuDefinition d,MenuAction a){if(a==null)return;String v=Chat.color(a.getValue().replace("%player%",p.getName()).replace("%menu%",d.id()));switch(a.getType()){case PLAYER_COMMAND:p.performCommand(v.startsWith("/")?v.substring(1):v);break;case CONSOLE_COMMAND:Bukkit.dispatchCommand(Bukkit.getConsoleSender(),v.startsWith("/")?v.substring(1):v);break;case MESSAGE:p.sendMessage(v);break;case OPEN_MENU:MenuDefinition n=get(a.getValue());if(n!=null)open(p,n);break;case CLOSE:p.closeInventory();break;}}
+ public static final class MenuHolder implements InventoryHolder {private final String id;private final boolean editor;public MenuHolder(String i,boolean e){id=i;editor=e;}public String id(){return id;}public boolean editor(){return editor;}public Inventory getInventory(){return null;}}
+}

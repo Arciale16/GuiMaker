@@ -1,0 +1,2 @@
+package net.zartra.gui;
+final class ActionSequencing {private ActionSequencing(){}static long delay(long inherited,ActionEntry entry){return Math.max(0,inherited)+Math.max(0,entry.delay);}static boolean continueAfter(boolean succeeded,ActionEntry entry){return succeeded||!entry.stopOnFailure;}static long waitTicks(String value){try{long n=Long.parseLong(value);return ActionValidator.delay(n)?n:-1;}catch(Exception e){return -1;}}}

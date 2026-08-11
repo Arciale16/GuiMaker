@@ -1,0 +1,3 @@
+package net.zartra.gui;
+import org.bukkit.event.inventory.ClickType;
+final class ClickMapper {private ClickMapper(){}static boolean blocked(ClickType click){return click==ClickType.DOUBLE_CLICK;}static MenuClickType resolve(boolean shift,boolean left,boolean right,ClickType click){if(shift)return left?MenuClickType.SHIFT_LEFT:MenuClickType.SHIFT_RIGHT;if(click==ClickType.MIDDLE)return MenuClickType.MIDDLE;if(click==ClickType.NUMBER_KEY)return MenuClickType.NUMBER_KEY;return right?MenuClickType.RIGHT:MenuClickType.LEFT;}}

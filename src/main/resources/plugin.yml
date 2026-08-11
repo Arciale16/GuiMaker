@@ -1,0 +1,21 @@
+name: ZartraGUI
+version: 1.1.0
+main: net.zartra.gui.ZartraGUIPlugin
+authors: [Zartra]
+commands:
+  zgui:
+    description: ZartraGUI administration
+    aliases: [zartragui, guimaker]
+permissions:
+  zartragui.admin: {default: op}
+  zartragui.create: {default: op}
+  zartragui.edit: {default: op}
+  zartragui.delete: {default: op}
+  zartragui.open: {default: op}
+  zartragui.open.others: {default: op}
+  zartragui.reload: {default: op}
+  zartragui.preview: {default: op}
+  zartragui.duplicate: {default: op}
+  zartragui.import: {default: op}
+  zartragui.export: {default: op}
+  zartragui.debug: {default: op}

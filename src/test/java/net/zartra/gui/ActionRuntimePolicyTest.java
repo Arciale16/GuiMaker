@@ -1,0 +1,7 @@
+package net.zartra.gui;
+import java.util.UUID;import org.junit.Test;import static org.junit.Assert.*;
+public class ActionRuntimePolicyTest {
+ @Test public void delayWaitAndStopPolicyAreDeterministic(){ActionEntry a=new ActionEntry();a.delay=5;assertEquals(8,ActionSequencing.delay(3,a));assertEquals(0,ActionSequencing.delay(-4,new ActionEntry()));assertEquals(20,ActionSequencing.waitTicks("20"));assertEquals(-1,ActionSequencing.waitTicks("72001"));assertEquals(-1,ActionSequencing.waitTicks("no"));a.stopOnFailure=true;assertFalse(ActionSequencing.continueAfter(false,a));assertTrue(ActionSequencing.continueAfter(true,a));a.stopOnFailure=false;assertTrue(ActionSequencing.continueAfter(false,a));}
+ @Test public void cooldownBlocksSameMenuSlotOnly(){CooldownManager c=new CooldownManager();UUID u=UUID.randomUUID();assertTrue(c.ready(u,"one:0",2));assertFalse(c.ready(u,"one:0",2));assertTrue(c.ready(u,"one:1",2));}
+ @Test public void allSixClickTypesArePersistable(){assertArrayEquals(new String[]{"LEFT","RIGHT","SHIFT_LEFT","SHIFT_RIGHT","MIDDLE","NUMBER_KEY"},names());}private String[] names(){MenuClickType[] x=MenuClickType.values();String[] n=new String[x.length];for(int i=0;i<x.length;i++)n[i]=x[i].name();return n;}
+}

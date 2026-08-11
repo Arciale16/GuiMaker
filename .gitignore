@@ -1,0 +1,35 @@
+# Build and local runtime outputs
+target/
+target-legacy-backup/
+*.log
+*.tmp
+*.cache
+
+# Minecraft/Paper runtime data
+plugins/
+world/
+world_nether/
+world_the_end/
+cache/
+crash-reports/
+
+# IDE and operating-system metadata
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store
+Thumbs.db
+
+# Local credentials and secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.yml
+secrets*.yaml

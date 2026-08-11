@@ -1,0 +1,3 @@
+package net.zartra.gui;
+import java.util.UUID;
+final class ActionEntry { String id=UUID.randomUUID().toString(); String type="MESSAGE"; String value=""; int order; long delay; double chance=100D; boolean enabled=true; boolean stopOnFailure; final java.util.List<ConditionEntry> conditions=new java.util.ArrayList<ConditionEntry>(); ActionEntry copy(){return copy(false);} ActionEntry duplicate(){return copy(true);} private ActionEntry copy(boolean fresh){ActionEntry x=new ActionEntry();if(!fresh)x.id=id;x.type=type;x.value=value;x.order=order;x.delay=delay;x.chance=chance;x.enabled=enabled;x.stopOnFailure=stopOnFailure;for(ConditionEntry c:conditions){ConditionEntry n=new ConditionEntry(c.type,c.value);n.inverted=c.inverted;x.conditions.add(n);}return x;} }
