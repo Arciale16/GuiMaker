@@ -1,7 +1,7 @@
 name: ZartraGUI
 version: 1.1.0
 main: net.zartra.gui.ZartraGUIPlugin
-authors: [Zartra]
+authors: [Zartra]\nsoftdepend: [PlaceholderAPI, Vault]
 commands:
   zgui:
     description: ZartraGUI administration

@@ -1,0 +1,3 @@
+package net.zartra.gui;
+import java.util.*;
+final class EditorHistory<T>{private final int max;private final List<T> states=new ArrayList<T>();private int index=-1;EditorHistory(int max){this.max=Math.max(1,max);}void push(T state){while(states.size()>index+1)states.remove(states.size()-1);states.add(state);if(states.size()>max)states.remove(0);index=states.size()-1;}T undo(){if(index<=0)return null;return states.get(--index);}T redo(){if(index>=states.size()-1)return null;return states.get(++index);}boolean dirty(){return index>0;}int size(){return states.size();}}
