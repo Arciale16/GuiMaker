@@ -1,0 +1,3 @@
+package net.zartra.gui;
+import org.bukkit.*;import org.bukkit.inventory.*;
+final class InventoryCompat {private InventoryCompat(){}static int chestSlots(int slots){if(slots<9)return 9;if(slots>54)return 54;return ((slots+8)/9)*9;}static boolean supportedType(String type){return "CHEST".equalsIgnoreCase(type);}static String safeType(String type){return supportedType(type)?"CHEST":"CHEST";}static Inventory create(MenuManager.Holder holder,MenuDefinition menu,String title){return Bukkit.createInventory(holder,chestSlots(menu.rows*9),title==null?"":title);}static String title(String title){String raw=title==null?"":title;return raw.length()>32?raw.substring(0,32):raw;}}
