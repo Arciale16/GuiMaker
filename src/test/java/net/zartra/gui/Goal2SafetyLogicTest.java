@@ -1,0 +1,3 @@
+package net.zartra.gui;
+import org.junit.Test;import static org.junit.Assert.*;
+public class Goal2SafetyLogicTest {@Test public void refreshSettingsAreBoundedByManagerRules(){MenuDefinition m=new MenuDefinition("refresh","Refresh",3);m.refreshInterval=0;assertEquals(1,MenuPagination.pages(m));assertTrue(ActionValidator.delay(20));}@Test public void soundAdapterDoesNotRequireAValue(){assertTrue(CompatSound.play(null,""));}}
