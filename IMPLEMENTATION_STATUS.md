@@ -12,3 +12,7 @@ Final artifacts:
 - `dist/ZartraGUI.jar`
 
 They are byte-identical (124589 bytes, SHA-256 `92EB11EC0C1A8B4A47EE1102F10B0A9048F9C60E743C38BD8DDBABD1DC21D876`).
+
+## Command and modal-input repair
+
+/zgui, /zartragui, and /guimaker now share explicit open/preview parsing. Runtime open continues through the normal permission/condition pipeline; safe preview uses a dedicated protected inventory and never dispatches configured actions. Chat-driven editor input is modal: the source inventory closes intentionally before the prompt is sent on the main thread, chat is captured, and the stored return inventory is restored on cancellation or completion. PLAYER_COMMAND accepts a command with or without a leading slash and stores the normalized command without executing it.
