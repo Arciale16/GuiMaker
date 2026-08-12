@@ -1,0 +1,3 @@
+package net.zartra.gui;
+import org.bukkit.Material;import org.bukkit.inventory.ItemStack;import org.junit.Test;import static org.junit.Assert.*;
+public class Goal2AppearanceCompatTest {@Test public void modernFieldsDoNotRequireModernApi(){MenuItem item=new MenuItem(new ItemStack(Material.STONE),null);item.unbreakable=true;item.customModelData=45;item.headOwner="Alex";item.leatherColor="255,0,0";item.enchantments.put("DURABILITY",1);assertNotNull(item.stack());}}
