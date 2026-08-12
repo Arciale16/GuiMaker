@@ -4,3 +4,5 @@ max-actions-per-item: 32
 max-action-chain-depth: 64
 max-lore-lines: 100
 minimum-refresh-interval: 20
+# Optional value used by the %server% placeholder; blank uses the compatible server-name resolver.
+server-name: ''

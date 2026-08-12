@@ -1,0 +1,2 @@
+package net.zartra.gui;
+final class PlayerCommand {private PlayerCommand(){}static String normalize(String value){if(value==null)return null;String command=value.trim();while(command.startsWith("/"))command=command.substring(1);command=command.trim();return command.length()==0?null:command;}}

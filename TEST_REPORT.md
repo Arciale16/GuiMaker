@@ -2,7 +2,7 @@
 
 ## Final automated and runtime verification
 
-A clean `javac --release 8` compilation against Spigot API 1.8.8 completed successfully. The JUnit 4 suite completed successfully: **58 tests, 0 failures**.
+A clean `javac --release 8` compilation against Spigot API 1.8.8 completed successfully. The JUnit 4 suite completed successfully: **64 tests, 0 failures**.
 
 Runtime smoke tests used the final, byte-identical artifact on:
 
@@ -20,7 +20,7 @@ The final JAR contains `plugin.yml`, `GuiService.class`, and `GuiListener.class`
 | Java 8 bytecode source compatibility | IMPLEMENTED_AND_TESTED | clean `--release 8` compilation; JAR major version 52 |
 | Plugin descriptor command and optional dependency declaration | IMPLEMENTED_AND_TESTED | packaged `plugin.yml`; command and aliases load on both Paper versions |
 | Ordered action model and action registry | IMPLEMENTED_AND_TESTED | action model tests and connected type/edit/reorder/delete screens |
-| Conditions, scoped variables, condition side effects | IMPLEMENTED_AND_TESTED | 58-test suite, persistence tests, item/action/opening-condition editors |
+| Conditions, scoped variables, condition side effects | IMPLEMENTED_AND_TESTED | 64-test suite, persistence tests, item/action/opening-condition editors |
 | Deterministic menu/item/action/condition YAML persistence and legacy action backup | IMPLEMENTED_AND_TESTED | persistence and migration tests; save/reload command smoke on both servers |
 | Vault and PlaceholderAPI optionality | IMPLEMENTED_RUNTIME_UNVERIFIED | reflection-only adapters; no external provider supplied for integration testing |
 | Full editor navigation, localization resources, import/export backups, history, and final server smoke matrix | IMPLEMENTED_AND_TESTED | connected dashboard/list/visual/settings/item/lore/enchantment/flags/action/condition/lifecycle/pagination/preview/undo/redo/clipboard flows; 52 tests; Paper 1.8.8 and 1.21.11 runtime smoke |
@@ -33,3 +33,12 @@ There are **zero NOT_IMPLEMENTED requirements**.
 The alias descriptor (zgui, zartragui, guimaker) and explicit command router now support open <menu-id> and preview <menu-id> with player-only validation, menu-ID completion, usage and unknown-menu feedback. Preview builds a protected PREVIEW inventory without invoking the runtime action/condition/open/close pipeline. The shared modal input manager now closes first through an intentional close transition and prompts on the following main-thread task; cancellation, timeout, disconnect, reload and disable cleanup remain covered by the existing lifecycle paths. PLAYER_COMMAND values reject blanks and normalize one leading slash without executing during configuration.
 
 The final artifact was smoke-tested on PaperSpigot 1.8.8 (Java 8u502) and Paper 1.21.11 build 130 (Java 21.0.12). On both servers, zgui version, guimaker open <id>, zartragui preview <id>, missing-ID usage and unknown-menu feedback were verified. Console correctly rejects inventory-opening commands with a player-only message.
+
+
+## Modern compatibility and PLAYER_COMMAND repair
+
+%server% now resolves through ServerNameResolver: configured server-name, system override, reflection-only getServerName/getName, then server. PlaceholderService isolates optional placeholder failures so no single placeholder aborts rendering. Compiled PlaceholderService bytecode invokes ServerNameResolver.resolve and contains no Bukkit.getServerName invocation.
+
+PLAYER_COMMAND has one canonical persisted form: trimmed without leading slashes. Normalization applies in chat editing, YAML read/write (including legacy values), and again after placeholder expansion immediately before Player.performCommand. Blank/slash-only commands fail; dispatch alse or a dispatch exception returns action failure. The 64-test suite covers resolver fallback, bytecode-source audit, command normalization, legacy YAML normalization, one-time player dispatch, and false dispatch behavior.
+
+Final JAR startup was verified on Paper 1.21.11 build 130 / Java 21.0.12 with a persisted 	est2 menu titled %server% test2, and on PaperSpigot 1.8.8 / Java 8u502. All three requested aliases were dispatched on each server and correctly rejected console inventory opens as player-only; no NoSuchMethodError or plugin exception occurred. A connected game client was not available in the isolated server environment, so physical player inventory opening/click dispatch remains unverified; direct compiled-bytecode and deterministic dispatch coverage verifies that path.

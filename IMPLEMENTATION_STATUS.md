@@ -16,3 +16,8 @@ They are byte-identical (124589 bytes, SHA-256 `92EB11EC0C1A8B4A47EE1102F10B0A90
 ## Command and modal-input repair
 
 /zgui, /zartragui, and /guimaker now share explicit open/preview parsing. Runtime open continues through the normal permission/condition pipeline; safe preview uses a dedicated protected inventory and never dispatches configured actions. Chat-driven editor input is modal: the source inventory closes intentionally before the prompt is sent on the main thread, chat is captured, and the stored return inventory is restored on cancellation or completion. PLAYER_COMMAND accepts a command with or without a leading slash and stores the normalized command without executing it.
+
+
+## Modern server-name and player-command repair
+
+The %server% placeholder no longer links Bukkit.getServerName; it uses a cached reflection-only resolver with a configurable fallback. PLAYER_COMMAND values are canonically stored without leading slashes and runtime dispatch honors the Bukkit boolean result. See TEST_REPORT.md for the 64-test suite and Paper 1.8.8/1.21.11 evidence.
