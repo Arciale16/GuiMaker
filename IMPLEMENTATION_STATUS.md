@@ -1,7 +1,7 @@
-# ZartraGUI Goal 2 status
+# Implementation status
 
-## Checkpoint 1 — conditions and variables
+## Active completion work
 
-Implemented and tested: complete condition registry identifiers/metadata, condition AND/OR execution, per-condition enabled/inverted/failure metadata, condition YAML persistence, safe malformed-condition handling, persistent global and UUID-player variables, nonpersistent temporary/session scopes, deterministic `%var:SCOPE:key%` placeholders, and SET/ADD/REMOVE/TOGGLE variable actions through the existing action registry.
+This repository is being completed against the combined master and Goal 2 specification. The current checkpoint repairs the malformed `plugin.yml` descriptor, unifies deterministic YAML persistence, preserves legacy action migration backups, persists full menu/item condition sets (including nested action chains), and connects condition-set success/failure actions to menu opening and item clicks.
 
-Still in progress: condition/item/menu editor screens, Vault-backed conditions/actions, advanced menu/item settings, pagination, editor history, and final Goal 2 verification.
+Verified at this checkpoint: Java 8-target compilation and 41 automated tests. The final cross-version server smoke tests, final JAR replacement, and the remaining editor/localization/requirement-matrix completion work have not yet been claimed as complete.
