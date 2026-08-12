@@ -1,7 +1,9 @@
 # ZartraGUI
 
-ZartraGUI is a Java 8 bytecode Paper/Spigot menu authoring plugin built against the Spigot 1.8.8 API. Its `zgui`, `zartragui`, and `guimaker` commands manage persistent inventory menus with ordered click actions, scoped variables, conditions, pagination, refresh, optional Vault and PlaceholderAPI integration, and legacy/modern material adapters.
+ZartraGUI is a Java 8 bytecode Paper/Spigot menu-authoring plugin built against the Spigot 1.8.8 API. It supports Paper 1.8.8 through modern Paper without NMS or CraftBukkit-version imports.
 
-Build verification uses `javac --release 8` against the bundled 1.8.8 API. Optional integrations are reflection-based and are not bundled in the plugin JAR.
+Use `/zgui` (aliases: `/zartragui`, `/guimaker`) as a player to open the authoring dashboard. The editor includes menu list pagination, visual item editing, material/name/lore/enchantment/flag controls, click-type action pipelines, nested success/failure actions, action and opening conditions, lifecycle open/close actions, pagination/filler controls, preview, confirmations, clipboard, and bounded undo/redo. Console administration supports `version`, `create`, `save`, and `reload`, along with the remaining documented `/zgui` subcommands.
 
-The current implementation checkpoint is tracked in `IMPLEMENTATION_STATUS.md`; reproducible verification and the requirement matrix are tracked in `TEST_REPORT.md`.
+Build verification uses `javac --release 8` against the 1.8.8 API. The final JAR is available at `target/ZartraGUI.jar` and `dist/ZartraGUI.jar`; both are identical Java major-version-52 artifacts. Optional Vault and PlaceholderAPI integrations are reflection-based and are not bundled.
+
+See `IMPLEMENTATION_STATUS.md` for completed behavior and `TEST_REPORT.md` for the 52-test and cross-version runtime evidence.

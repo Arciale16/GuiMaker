@@ -1,7 +1,14 @@
 # Implementation status
 
-## Active completion work
+## Final completion state
 
-This repository is being completed against the combined master and Goal 2 specification. The current checkpoint repairs the malformed `plugin.yml` descriptor, unifies deterministic YAML persistence, preserves legacy action migration backups, persists full menu/item condition sets (including nested action chains), and connects condition-set success/failure actions to menu opening and item clicks.
+ZartraGUI now has a connected in-game authoring flow from the `/zgui` dashboard through paginated menu listing, visual item editing, item appearance/material/lore/enchantment/flag editors, click-type action pipelines, nested success/failure actions, action conditions, menu opening conditions, lifecycle open/close actions, pagination/filler controls, preview return, confirmation dialogs, clipboard, bounded undo/redo, unsaved-change protection, and chat-input cancellation/timeout return handling.
 
-Verified at this checkpoint: Java 8-target compilation and 41 automated tests. The final cross-version server smoke tests, final JAR replacement, and the remaining editor/localization/requirement-matrix completion work have not yet been claimed as complete.
+The plugin is compiled against the 1.8.8 API with Java 8 bytecode and uses compatibility adapters rather than version-specific server implementation classes. Final verification is documented in `TEST_REPORT.md`: 52 deterministic tests pass and the final artifact was smoke-tested on PaperSpigot 1.8.8 (Java 8u502) and Paper 1.21.11 (Java 21.0.12).
+
+Final artifacts:
+
+- `target/ZartraGUI.jar`
+- `dist/ZartraGUI.jar`
+
+They are byte-identical (124589 bytes, SHA-256 `92EB11EC0C1A8B4A47EE1102F10B0A9048F9C60E743C38BD8DDBABD1DC21D876`).
