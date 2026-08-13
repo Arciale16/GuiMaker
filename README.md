@@ -7,3 +7,7 @@ Use `/zgui` (aliases `/zartragui`, `/guimaker`) as a player to open the authorin
 Optional Vault, PlaceholderAPI, Multiverse-Core, HeadDatabase and PlayerPoints support is reflection-only and never bundled. Missing providers safely disable only their related action/condition behavior.
 
 Final artifact: `target/ZartraGUI.jar` and `dist/ZartraGUI.jar`, byte-identical, 142191 bytes, SHA-256 `55360AE53D164C186A280C1B269C3A53BF0EFE6A1A66C7635AB128A553248139`, class major version 52. See `IMPLEMENTATION_STATUS.md` and `TEST_REPORT.md` for evidence and limitations.
+## Latest improvements
+
+The GUI manager, command editor and creation flow now use one Menu Configuration route. Dynamic aliases refresh immediately after add/remove and support OPTIONAL/REQUIRED/DISABLED targets. Inventory type selection is runtime-discovered and classified; safe custom/special adapters are selectable and server-managed types are shown disabled.
+

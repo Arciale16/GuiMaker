@@ -29,3 +29,7 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Size: 142191 bytes.
 - SHA-256: `55360AE53D164C186A280C1B269C3A53BF0EFE6A1A66C7635AB128A553248139`.
 - Java class major version: 52.
+## Latest improvement verification
+
+73 deterministic tests pass. The final updated JAR passed a fresh PaperSpigot 1.8.8 / Java 8u431 enable, zgui version, zgui reload, and clean-disable smoke test. Inventory capability discovery is deterministic against the compiled legacy API; physical special-container interaction remains externally unverified without an authenticated client.
+

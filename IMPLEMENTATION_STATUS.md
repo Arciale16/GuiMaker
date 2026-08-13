@@ -15,3 +15,7 @@ This release supports Paper/Spigot **1.8.8 through 1.21.11**. It deliberately do
 ## Final artifact
 
 `target/ZartraGUI.jar` and `dist/ZartraGUI.jar` are byte-identical: 142191 bytes; SHA-256 `55360AE53D164C186A280C1B269C3A53BF0EFE6A1A66C7635AB128A553248139`.
+## Latest improvements
+
+Unified manager-to-configuration navigation preserves list context. Alias execution now supports immediate registration and target modes. InventoryCompat centrally classifies runtime InventoryType values, preserves unknown persisted IDs and enforces fixed capacities for special adapters.
+
