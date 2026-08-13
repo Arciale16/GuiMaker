@@ -43,3 +43,8 @@ Opening the Visual Editor snapshots your inventory for the session. Moving an it
 
 On modern Paper, a successfully restored Bukkit item snapshot is authoritative and is not rewritten from legacy material/data fields; colored modern blocks retain their exact identity. Reset Content presents **LIME_TERRACOTTA** to confirm and **RED_TERRACOTTA** to cancel, with lime/red legacy stained-clay fallbacks on 1.8.8.
 
+
+## Leather Color Picker
+
+Right-click a leather armor template, then choose **Leather Color** in Item Settings. The picker provides paginated pale/light/standard/dark/deep presets across 16 families, exact RGB (R,G,B) and HEX (#RRGGBB) entry, Reset to Default, preview, Apply and Cancel. Selections stay preview-only until Apply and are retained through save/reload along with the item’s other configuration.
+

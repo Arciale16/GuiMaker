@@ -81,3 +81,13 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Paper 1.21.11 build 130 / Java 21.0.12: isolated startup remapped ZartraGUI and reached normal Paper bootstrap/legacy-material initialization, but not plugin enable within a 58-second observation window; no plugin error was logged. Status: UNVERIFIED. No authenticated client was available, so physical BLUE_WOOL and terracotta display verification remains unverified.
 - Artifact: 152484 bytes, SHA-256 57435D356C8E5E1CE206A804EC9792727FC7D69012633CDA943E007F51948AD0, class major version 52; target and dist artifacts are byte-identical.
 
+
+## Leather armor color picker verification (2026-08-13)
+
+- 98 deterministic tests passed after clean Java 21 --release 8 compilation against the Spigot 1.8.8 API.
+- Leather capability is checked through metadata setColor/getColor reflection, not a material-name heuristic. The picker provides 16 named families with pale/light/standard/dark/deep variants (80 presets), paginated dyed-leather previews, RGB and HEX input, default reset, preview-only selection, Apply/Cancel and one history checkpoint at Apply.
+- Persisted fields: leather-color and leather-default; color changes update the Bukkit item snapshot while retaining item configuration/actions/conditions.
+- PaperSpigot-445 / Minecraft 1.8.8 / Java 8u431: complete startup, ZartraGUI enable and clean disable passed.
+- Paper 1.21.11 build 130 / Java 21.0.12: isolated server remapped ZartraGUI and completed normal Paper bootstrap through legacy-material initialization, but did not reach plugin enable within 58 seconds; no ZartraGUI error was logged. Status: UNVERIFIED. No authenticated client was available, so physical picker interaction remains unverified.
+- Artifact: 158377 bytes, SHA-256 988EE0A918BD5E6248C4155DEFE2B79D134F166B2841C1E680FC3547C9FEDF07, class major version 52; target and dist are byte-identical.
+

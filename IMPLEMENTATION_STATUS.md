@@ -49,3 +49,8 @@ A Visual Editor session snapshots the administrator's inventory, armor and held 
 
 Bukkit serialized snapshots are authoritative when restoration succeeds: MenuItem no longer applies legacy material or durability over a deserialized modern item. This keeps modern materials such as BLUE_WOOL and LIME/RED_TERRACOTTA exact, while the portable legacy fallback still retains 1.8.8 variant data. Reset Content now renders LIME_TERRACOTTA and RED_TERRACOTTA, falling back to lime/red STAINED_CLAY data 5/14 only on legacy servers.
 
+
+## Leather armor color picker
+
+Item Settings now exposes Leather Color only when the item's metadata supports color. The in-game paginated picker has 80 dyed-leather preset swatches, arbitrary RGB and HEX entry, default reset, selected preview, Apply/Cancel and undo-compatible application. It stores explicit color/default state, preserves the serialized item snapshot and leaves actions, conditions and other metadata intact.
+
