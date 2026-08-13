@@ -44,3 +44,8 @@ The editor now persists a lossless Bukkit stack snapshot in addition to portable
 
 A Visual Editor session snapshots the administrator's inventory, armor and held slot. During the session, lower-inventory pickup/place updates the displayed session inventory and a virtual cursor atomically, while the configured template receives an exact cloned ItemStack. The snapshot is restored idempotently when the session ends. Right-click on a configured top slot now opens Item Settings without mutating the item; ordinary left-click and drag remain normal editing gestures.
 
+
+## Colored variant reconstruction and terracotta reset controls
+
+Bukkit serialized snapshots are authoritative when restoration succeeds: MenuItem no longer applies legacy material or durability over a deserialized modern item. This keeps modern materials such as BLUE_WOOL and LIME/RED_TERRACOTTA exact, while the portable legacy fallback still retains 1.8.8 variant data. Reset Content now renders LIME_TERRACOTTA and RED_TERRACOTTA, falling back to lime/red STAINED_CLAY data 5/14 only on legacy servers.
+

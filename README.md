@@ -38,3 +38,8 @@ The Visual Editor now follows normal inventory gestures safely: left/right picku
 
 Opening the Visual Editor snapshots your inventory for the session. Moving an item from the lower inventory into the menu removes it visibly from the session source slot and keeps its exact Bukkit stack identity; closing, saving or cancelling restores your original inventory. Right-click a configured menu item to open Item Settings; left-click and drag are reserved for natural movement.
 
+
+## Exact colored variants
+
+On modern Paper, a successfully restored Bukkit item snapshot is authoritative and is not rewritten from legacy material/data fields; colored modern blocks retain their exact identity. Reset Content presents **LIME_TERRACOTTA** to confirm and **RED_TERRACOTTA** to cancel, with lime/red legacy stained-clay fallbacks on 1.8.8.
+

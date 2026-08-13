@@ -71,3 +71,13 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Paper 1.21.11 build 130 / Java 21.0.12: two isolated runs completed plugin remapping and normal server initialization through legacy-material initialization but did not reach plugin enable before their 45s/55s observation limits; no ZartraGUI error occurred. Status: UNVERIFIED. No authenticated client was available, so physical blue-wool transfer/right-click verification is explicitly unverified.
 - Artifact: 152543 bytes, SHA-256 F0C1FCD97B3C0D21A1EC18DBEAC1EF3D7DED5D5BA6DD46C17189B377BB17EB9A, Java class major version 52; target and dist are byte-identical.
 
+
+## Colored snapshot and terracotta-control verification (2026-08-13)
+
+- 92 deterministic tests passed after a clean Java 21 --release 8 compile against Spigot API 1.8.8.
+- Root cause fixed: after successful Bukkit ItemStack.deserialize(), MenuItem.stack() was applying stored legacy setType and setDurability, allowing modern color identity to be overwritten by legacy/default data. The deserialized snapshot is now authoritative; legacy material/data is only used if snapshot restoration fails.
+- Reset Content uses LIME_TERRACOTTA/RED_TERRACOTTA where available and STAINED_CLAY with data 5/14 on legacy servers. Routing continues to use protected slot identity, not icon material.
+- PaperSpigot-445 / Minecraft 1.8.8 / Java 8u431: complete startup, ZartraGUI enable and clean disable passed.
+- Paper 1.21.11 build 130 / Java 21.0.12: isolated startup remapped ZartraGUI and reached normal Paper bootstrap/legacy-material initialization, but not plugin enable within a 58-second observation window; no plugin error was logged. Status: UNVERIFIED. No authenticated client was available, so physical BLUE_WOOL and terracotta display verification remains unverified.
+- Artifact: 152484 bytes, SHA-256 57435D356C8E5E1CE206A804EC9792727FC7D69012633CDA943E007F51948AD0, class major version 52; target and dist artifacts are byte-identical.
+

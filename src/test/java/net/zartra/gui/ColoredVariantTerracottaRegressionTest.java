@@ -1,0 +1,7 @@
+package net.zartra.gui;
+import static org.junit.Assert.*;import org.bukkit.Material;import org.bukkit.inventory.ItemStack;import org.junit.Test;
+public class ColoredVariantTerracottaRegressionTest {
+ @Test public void legacyBlueWoolSnapshotDoesNotLoseItsVariant(){MenuItem item=new MenuItem(new ItemStack(Material.WOOL,4,(short)11),null);ItemStack rendered=item.stack();assertEquals(Material.WOOL,rendered.getType());assertEquals(11,rendered.getDurability());assertEquals(4,rendered.getAmount());}
+ @Test public void successfulSnapshotRestoreIsNotRebuiltAsLegacyItem()throws Exception{String source=new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get("src/main/java/net/zartra/gui/MenuItem.java")),"UTF-8");int deserialize=source.indexOf("ItemStack.deserialize");int fallback=source.indexOf("if(out==null||out.getType()==Material.AIR)");assertTrue(deserialize>=0&&fallback>deserialize);String restored=source.substring(deserialize,fallback);assertFalse(restored.contains("setType("));assertFalse(restored.contains("setDurability("));}
+ @Test public void confirmationUsesTerracottaWithCorrectLegacyData()throws Exception{String source=new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get("src/main/java/net/zartra/gui/GuiService.java")),"UTF-8");assertTrue(source.contains("LIME_TERRACOTTA"));assertTrue(source.contains("RED_TERRACOTTA"));assertTrue(source.contains("STAINED_CLAY"));assertTrue(source.contains("yes?5:14"));assertFalse(source.contains("LIME_CONCRETE"));assertFalse(source.contains("RED_CONCRETE"));}
+}
