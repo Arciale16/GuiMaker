@@ -6,7 +6,7 @@ softdepend: [PlaceholderAPI, Vault, Multiverse-Core, HeadDatabase, PlayerPoints]
 commands:
   zgui:
     description: ZartraGUI administration
-    aliases: [zartragui, guimaker]
+    aliases: [zartragui, guimaker, gui]
 permissions:
   zartragui.admin: {default: op}
   zartragui.create: {default: op}

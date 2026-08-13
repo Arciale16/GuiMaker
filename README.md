@@ -11,3 +11,8 @@ Final artifact: `target/ZartraGUI.jar` and `dist/ZartraGUI.jar`, byte-identical,
 
 The GUI manager, command editor and creation flow now use one Menu Configuration route. Dynamic aliases refresh immediately after add/remove and support OPTIONAL/REQUIRED/DISABLED targets. Inventory type selection is runtime-discovered and classified; safe custom/special adapters are selectable and server-managed types are shown disabled.
 
+
+## Special inventory and item safety fixes
+
+/gui is a full alias of /zgui and cannot be claimed by a menu. The runtime inventory registry now routes supported special layouts through real Bukkit inventory containers. Item editor transitions use deep MenuItem copies and registry-aware material resolution, so a valid item is never silently replaced by STONE.
+

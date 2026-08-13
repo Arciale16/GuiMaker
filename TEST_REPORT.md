@@ -33,3 +33,8 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 
 73 deterministic tests pass. The final updated JAR passed a fresh PaperSpigot 1.8.8 / Java 8u431 enable, zgui version, zgui reload, and clean-disable smoke test. Inventory capability discovery is deterministic against the compiled legacy API; physical special-container interaction remains externally unverified without an authenticated client.
 
+
+## Reproduced issue fixes
+
+77 tests pass. Final JAR passed Paper 1.21.11 build 130 / Java 21 startup plus gui version, gui reload, and clean disable. The server-side harness verifies descriptor registration and container adapter classification; a connected authenticated client was unavailable, so physical special-container clicks remain externally unverified.
+

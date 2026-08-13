@@ -19,3 +19,8 @@ This release supports Paper/Spigot **1.8.8 through 1.21.11**. It deliberately do
 
 Unified manager-to-configuration navigation preserves list context. Alias execution now supports immediate registration and target modes. InventoryCompat centrally classifies runtime InventoryType values, preserves unknown persisted IDs and enforces fixed capacities for special adapters.
 
+
+## Special inventory and item safety fixes
+
+Supported runtime layouts include special Bukkit containers via centralized InventoryCompat adapters. Visual editing uses the selected container topology and protection listener. Valid material IDs resolve through the running Material registry; unknown raw IDs are retained and do not overwrite data with STONE. /gui shares the root command executor/completer and is reserved from dynamic aliases.
+
