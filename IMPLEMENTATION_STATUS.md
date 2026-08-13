@@ -29,3 +29,8 @@ Supported runtime layouts include special Bukkit containers via centralized Inve
 
 InventoryClickEvent handling now deep-clones source stacks before editor transitions and never substitutes an editor control for the selected item. Every visible supported special-container slot is authorable through cancelled server-side placement; templates persist independently of vanilla input restrictions.
 
+
+## Latest editor completion
+
+Configured item templates retain the raw material ID, legacy data value and amount. The visual editor now uses left-click for item actions, right-click to remove with undo, and shift-left to move. Occupied destinations use Swap, Replace or Cancel confirmation. Menu Configuration provides Reset Content; it clears only item slots after a lime/red confirmation and is undoable. The artifact is Java-8 bytecode (major 52), 149248 bytes, SHA-256 41D95FBD8AFC8016D8617210613101972A59A07F011DF632F71B1D283EEEC354.
+

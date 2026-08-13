@@ -21,3 +21,10 @@ The GUI manager, command editor and creation flow now use one Menu Configuration
 
 The editor captures cloned current/cursor stacks before changing screens. Special container placement is cancelled and written into ZartraGUI's template model, so native acceptance rules cannot consume or reject administrator template items. The selector uses version-aware representative block icons.
 
+
+## Editor controls
+
+In the Visual Editor, left-click a configured item to edit it, right-click to remove it (undo with Ctrl+drop), and shift-left it before left-clicking a destination to move it. An occupied destination presents Swap, Replace and Cancel. Menu Configuration includes **Reset Content**, which clears only configured slots after a lime/red confirmation while preserving title, inventory settings, permissions, aliases and other menu configuration.
+
+Current artifact: 149248 bytes; SHA-256 41D95FBD8AFC8016D8617210613101972A59A07F011DF632F71B1D283EEEC354; Java class major version 52.
+

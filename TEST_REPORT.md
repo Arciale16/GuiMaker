@@ -43,3 +43,12 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 
 80 tests pass. Final JAR passed Paper 1.21.11 build 130 / Java 21 enable, gui version, and clean disable. The event-path test asserts current/cursor cloning precedes GUI transition. Physical client special-slot clicks remain externally unverified because no authenticated client was available.
 
+
+## Move/reset and variant-preservation verification (2026-08-13)
+
+- 83 deterministic tests passed after Java 21 --release 8 compilation against spigot-api-1.8.8.jar (test runtime also used local SnakeYAML, Guava and Commons Lang dependencies).
+- Final artifact: 149248 bytes; SHA-256 41D95FBD8AFC8016D8617210613101972A59A07F011DF632F71B1D283EEEC354; class major version 52; 	arget/ZartraGUI.jar and dist/ZartraGUI.jar are byte-identical.
+- PaperSpigot-445 / Minecraft 1.8.8 / Java 8u431: fresh startup, ZartraGUI enable, complete startup and plugin disable passed.
+- Paper 1.21.11 build 130 / Java 21.0.12: fresh startup and ZartraGUI enable passed. The supplied console stop command triggered a Paper 1.21.11 command-context NullPointerException after startup; this is server-console shutdown infrastructure, not a ZartraGUI exception. The isolated process was then terminated. No authenticated player was attached, so physical GUI clicking remains externally unverified.
+- Editor coverage: colored/legacy variant material, amount and data copy; right-click removal; shift-left move; occupied-slot Swap/Replace/Cancel; reset-content lime/red confirmation; and undo checkpoints.
+
