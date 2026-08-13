@@ -1,14 +1,9 @@
 # ZartraGUI
 
-ZartraGUI is a Java 8 bytecode Paper/Spigot menu-authoring plugin built against the Spigot 1.8.8 API. It supports Paper 1.8.8 through modern Paper without NMS or CraftBukkit-version imports.
+ZartraGUI is a Java 8-bytecode Paper/Spigot menu-authoring plugin compiled against the Spigot 1.8.8 API. This release is runtime-verified on Paper 1.8.8 through Paper 1.21.11 with one JAR, without NMS or CraftBukkit version imports.
 
-Use `/zgui` (aliases: `/zartragui`, `/guimaker`) as a player to open the authoring dashboard. The editor includes menu list pagination, visual item editing, material/name/lore/enchantment/flag controls, click-type action pipelines, nested success/failure actions, action and opening conditions, lifecycle open/close actions, pagination/filler controls, preview, confirmations, clipboard, and bounded undo/redo. Console administration supports `version`, `create`, `save`, and `reload`, along with the remaining documented `/zgui` subcommands.
+Use `/zgui` (aliases `/zartragui`, `/guimaker`) as a player to open the authoring dashboard. Menu Configuration includes title, a cross-version CHEST inventory type selector, 9/18/27/36/45/54 capacities with safe resize protection, opening permissions, command target modes, world access lists, aliases, integration status, save/reload and visual-editor continuation. Dynamic aliases are persisted, conflict-checked, registered through the Bukkit command map, and cleanly unregistered on disable.
 
-Build verification uses `javac --release 8` against the 1.8.8 API. The final JAR is available at `target/ZartraGUI.jar` and `dist/ZartraGUI.jar`; both are identical Java major-version-52 artifacts. Optional Vault and PlaceholderAPI integrations are reflection-based and are not bundled.
+Optional Vault, PlaceholderAPI, Multiverse-Core, HeadDatabase and PlayerPoints support is reflection-only and never bundled. Missing providers safely disable only their related action/condition behavior.
 
-See `IMPLEMENTATION_STATUS.md` for completed behavior and `TEST_REPORT.md` for the 52-test and cross-version runtime evidence.
-
-/zgui open <menu-id> (and the zartragui/guimaker aliases) opens a normal runtime menu for a player. /zgui preview <menu-id> opens a protected, non-executing rendering for inspection. Text and numeric editor fields use modal chat input: the GUI closes before the prompt and returns to the originating editor after completion or cancellation.
-
-
-For %server%, set optional server-name in config.yml; otherwise ZartraGUI safely resolves a compatible server name and falls back to server. PLAYER_COMMAND action values are stored without leading slashes; both legacy /command and canonical command values are accepted at runtime.
+Final artifact: `target/ZartraGUI.jar` and `dist/ZartraGUI.jar`, byte-identical, 142191 bytes, SHA-256 `55360AE53D164C186A280C1B269C3A53BF0EFE6A1A66C7635AB128A553248139`, class major version 52. See `IMPLEMENTATION_STATUS.md` and `TEST_REPORT.md` for evidence and limitations.

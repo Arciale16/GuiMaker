@@ -1,23 +1,17 @@
 # Implementation status
 
-## Final completion state
+## Release scope
 
-ZartraGUI now has a connected in-game authoring flow from the `/zgui` dashboard through paginated menu listing, visual item editing, item appearance/material/lore/enchantment/flag editors, click-type action pipelines, nested success/failure actions, action conditions, menu opening conditions, lifecycle open/close actions, pagination/filler controls, preview return, confirmation dialogs, clipboard, bounded undo/redo, unsaved-change protection, and chat-input cancellation/timeout return handling.
+This release supports Paper/Spigot **1.8.8 through 1.21.11**. It deliberately does not claim 26.x support. The Java-8-targeted compatibility adapters, reflection isolation and legacy-safe CHEST inventory strategy are retained for future releases.
 
-The plugin is compiled against the 1.8.8 API with Java 8 bytecode and uses compatibility adapters rather than version-specific server implementation classes. Final verification is documented in `TEST_REPORT.md`: 52 deterministic tests pass and the final artifact was smoke-tested on PaperSpigot 1.8.8 (Java 8u502) and Paper 1.21.11 (Java 21.0.12).
+## Completed implementation
 
-Final artifacts:
+- Menu Configuration: title, safe CHEST capacities, compatible inventory-type screen, permissions, aliases, command-target modes, world access, integrations, persistence/migration, and visual-editor continuation.
+- Dynamic aliases: persisted registration, conflict detection, safe command-map unregistration, player execution, reload/startup refresh and disable cleanup.
+- Runtime policy: normal opening enforces opening permission, ALL/WHITELIST/BLACKLIST world policy and conditions; preview is protected and non-executing.
+- Optional integrations: reflection-only Vault, PlaceholderAPI, Multiverse-Core, HeadDatabase and PlayerPoints adapters; providers are optional and not packaged.
+- Compatibility: no NMS/CraftBukkit imports; production classes compile against Spigot 1.8.8 API as Java class major 52.
 
-- `target/ZartraGUI.jar`
-- `dist/ZartraGUI.jar`
+## Final artifact
 
-They are byte-identical (124589 bytes, SHA-256 `92EB11EC0C1A8B4A47EE1102F10B0A9048F9C60E743C38BD8DDBABD1DC21D876`).
-
-## Command and modal-input repair
-
-/zgui, /zartragui, and /guimaker now share explicit open/preview parsing. Runtime open continues through the normal permission/condition pipeline; safe preview uses a dedicated protected inventory and never dispatches configured actions. Chat-driven editor input is modal: the source inventory closes intentionally before the prompt is sent on the main thread, chat is captured, and the stored return inventory is restored on cancellation or completion. PLAYER_COMMAND accepts a command with or without a leading slash and stores the normalized command without executing it.
-
-
-## Modern server-name and player-command repair
-
-The %server% placeholder no longer links Bukkit.getServerName; it uses a cached reflection-only resolver with a configurable fallback. PLAYER_COMMAND values are canonically stored without leading slashes and runtime dispatch honors the Bukkit boolean result. See TEST_REPORT.md for the 64-test suite and Paper 1.8.8/1.21.11 evidence.
+`target/ZartraGUI.jar` and `dist/ZartraGUI.jar` are byte-identical: 142191 bytes; SHA-256 `55360AE53D164C186A280C1B269C3A53BF0EFE6A1A66C7635AB128A553248139`.
