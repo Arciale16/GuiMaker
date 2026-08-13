@@ -28,3 +28,8 @@ In the Visual Editor, left-click a configured item to edit it, right-click to re
 
 Current artifact: 149248 bytes; SHA-256 41D95FBD8AFC8016D8617210613101972A59A07F011DF632F71B1D283EEEC354; Java class major version 52.
 
+
+## Natural virtual editor
+
+The Visual Editor now follows normal inventory gestures safely: left/right pickup and placement, swaps, partial stacks and drag distribution operate on a virtual template cursor, never consuming the administrator's inventory. Middle-click opens Item Settings. Each item also stores the server's Bukkit serialization snapshot alongside the portable fields, preserving modern variants and metadata such as BLUE_WOOL across save/reload where the running API supports serialization.
+

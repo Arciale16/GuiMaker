@@ -34,3 +34,8 @@ InventoryClickEvent handling now deep-clones source stacks before editor transit
 
 Configured item templates retain the raw material ID, legacy data value and amount. The visual editor now uses left-click for item actions, right-click to remove with undo, and shift-left to move. Occupied destinations use Swap, Replace or Cancel confirmation. Menu Configuration provides Reset Content; it clears only item slots after a lime/red confirmation and is undoable. The artifact is Java-8 bytecode (major 52), 149248 bytes, SHA-256 41D95FBD8AFC8016D8617210613101972A59A07F011DF632F71B1D283EEEC354.
 
+
+## Natural editing and lossless item snapshots
+
+The editor now persists a lossless Bukkit stack snapshot in addition to portable legacy fields. On a running modern server this retains the exact material identity and serializable metadata, avoiding reconstruction of BLUE_WOOL as legacy WOOL. The editing surface uses a virtual cursor and transaction controller: left/right pickup/place, natural swaps, partial stacks and drags update only the unsaved template; real player inventory is not consumed. Middle-click opens item settings. Class bytecode remains Java 8 compatible (major 52).
+

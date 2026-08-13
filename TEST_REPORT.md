@@ -52,3 +52,13 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Paper 1.21.11 build 130 / Java 21.0.12: fresh startup and ZartraGUI enable passed. The supplied console stop command triggered a Paper 1.21.11 command-context NullPointerException after startup; this is server-console shutdown infrastructure, not a ZartraGUI exception. The isolated process was then terminated. No authenticated player was attached, so physical GUI clicking remains externally unverified.
 - Editor coverage: colored/legacy variant material, amount and data copy; right-click removal; shift-left move; occupied-slot Swap/Replace/Cancel; reset-content lime/red confirmation; and undo checkpoints.
 
+
+## Lossless variants and natural editor regression verification (2026-08-13)
+
+- 86 deterministic tests passed after Java 21 --release 8 compilation against the Spigot 1.8.8 API.
+- Item templates now persist Bukkit ItemStack.serialize() output as stack-snapshot, retain the existing structured legacy fields, and reconstruct with ItemStack.deserialize() before applying explicit edits. This preserves modern material identities and serializable metadata when running on Paper 1.21.11; legacy fallback retains type, amount and durability.
+- The Visual Editor uses cancelled, virtual click/drag transactions with a virtual cursor. Normal left/right clicks, stack swaps, partial pickup/placement, external-template removal, drag updates and middle-click item settings are routed without consuming player inventory.
+- PaperSpigot-445 / Minecraft 1.8.8 / Java 8u431: startup, ZartraGUI enable, complete startup and plugin disable passed.
+- Paper 1.21.11 / build 130 / Java 21.0.12: the isolated process remapped and initialized ZartraGUI but exited before the server's complete-startup line and without a ZartraGUI stack trace. This smoke attempt is UNVERIFIED; an authenticated client was not available for physical BLUE_WOOL interaction.
+- Artifact: 151061 bytes, SHA-256 3E5C11EC2AB589E6047542728F673CA4F17563E17CFC4A773DA36276A0F4BE73, class major version 52; target and dist artifacts are byte-identical.
+
