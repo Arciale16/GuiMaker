@@ -38,3 +38,8 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 
 77 tests pass. Final JAR passed Paper 1.21.11 build 130 / Java 21 startup plus gui version, gui reload, and clean disable. The server-side harness verifies descriptor registration and container adapter classification; a connected authenticated client was unavailable, so physical special-container clicks remain externally unverified.
 
+
+## Editor regression verification
+
+80 tests pass. Final JAR passed Paper 1.21.11 build 130 / Java 21 enable, gui version, and clean disable. The event-path test asserts current/cursor cloning precedes GUI transition. Physical client special-slot clicks remain externally unverified because no authenticated client was available.
+

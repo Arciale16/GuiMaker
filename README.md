@@ -16,3 +16,8 @@ The GUI manager, command editor and creation flow now use one Menu Configuration
 
 /gui is a full alias of /zgui and cannot be claimed by a menu. The runtime inventory registry now routes supported special layouts through real Bukkit inventory containers. Item editor transitions use deep MenuItem copies and registry-aware material resolution, so a valid item is never silently replaced by STONE.
 
+
+## Editor click and special-slot authoring
+
+The editor captures cloned current/cursor stacks before changing screens. Special container placement is cancelled and written into ZartraGUI's template model, so native acceptance rules cannot consume or reject administrator template items. The selector uses version-aware representative block icons.
+

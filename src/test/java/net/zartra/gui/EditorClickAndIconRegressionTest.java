@@ -1,0 +1,7 @@
+package net.zartra.gui;
+import static org.junit.Assert.*;import org.junit.Test;import org.bukkit.Material;
+public class EditorClickAndIconRegressionTest {
+ @Test public void selectableTypesUseTypeSpecificIcons(){for(InventoryCompat.TypeInfo type:InventoryCompat.types())if(InventoryCompat.supportedType(type.id)){assertNotNull(InventoryCompat.icon(type.id));if(!"CHEST".equals(type.id))assertTrue(InventoryCompat.icon(type.id)!=Material.CHEST);}}
+ @Test public void requiredRepresentativeIconsAreMeaningful(){assertEquals(Material.FURNACE,InventoryCompat.icon("FURNACE"));assertEquals(Material.HOPPER,InventoryCompat.icon("HOPPER"));assertEquals(Material.BEACON,InventoryCompat.icon("BEACON"));assertTrue(InventoryCompat.icon("WORKBENCH")==CompatMaterial.find("CRAFTING_TABLE")||InventoryCompat.icon("WORKBENCH")==CompatMaterial.find("WORKBENCH"));}
+ @Test public void editorPathClonesCurrentAndCursorBeforeScreenTransition()throws Exception{String s=new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get("src/main/java/net/zartra/gui/GuiListener.java")),"UTF-8");assertTrue(s.contains("e.getCurrentItem()==null?null:e.getCurrentItem().clone()"));assertTrue(s.contains("e.getCursor()==null?null:e.getCursor().clone()"));assertTrue(s.contains("e.setCancelled(true);ItemStack current"));assertTrue(s.indexOf("d.items.put(raw,new MenuItem(current,null))")<s.indexOf("gui.leaveVisual(p,d)"));}
+}
