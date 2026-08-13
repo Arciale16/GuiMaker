@@ -33,3 +33,8 @@ Current artifact: 149248 bytes; SHA-256 41D95FBD8AFC8016D8617210613101972A59A07F
 
 The Visual Editor now follows normal inventory gestures safely: left/right pickup and placement, swaps, partial stacks and drag distribution operate on a virtual template cursor, never consuming the administrator's inventory. Middle-click opens Item Settings. Each item also stores the server's Bukkit serialization snapshot alongside the portable fields, preserving modern variants and metadata such as BLUE_WOOL across save/reload where the running API supports serialization.
 
+
+## Editor session safety
+
+Opening the Visual Editor snapshots your inventory for the session. Moving an item from the lower inventory into the menu removes it visibly from the session source slot and keeps its exact Bukkit stack identity; closing, saving or cancelling restores your original inventory. Right-click a configured menu item to open Item Settings; left-click and drag are reserved for natural movement.
+

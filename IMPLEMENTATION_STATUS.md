@@ -39,3 +39,8 @@ Configured item templates retain the raw material ID, legacy data value and amou
 
 The editor now persists a lossless Bukkit stack snapshot in addition to portable legacy fields. On a running modern server this retains the exact material identity and serializable metadata, avoiding reconstruction of BLUE_WOOL as legacy WOOL. The editing surface uses a virtual cursor and transaction controller: left/right pickup/place, natural swaps, partial stacks and drags update only the unsaved template; real player inventory is not consumed. Middle-click opens item settings. Class bytecode remains Java 8 compatible (major 52).
 
+
+## Live editor-session transfer and right-click editing
+
+A Visual Editor session snapshots the administrator's inventory, armor and held slot. During the session, lower-inventory pickup/place updates the displayed session inventory and a virtual cursor atomically, while the configured template receives an exact cloned ItemStack. The snapshot is restored idempotently when the session ends. Right-click on a configured top slot now opens Item Settings without mutating the item; ordinary left-click and drag remain normal editing gestures.
+

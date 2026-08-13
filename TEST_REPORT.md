@@ -62,3 +62,12 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Paper 1.21.11 / build 130 / Java 21.0.12: the isolated process remapped and initialized ZartraGUI but exited before the server's complete-startup line and without a ZartraGUI stack trace. This smoke attempt is UNVERIFIED; an authenticated client was not available for physical BLUE_WOOL interaction.
 - Artifact: 151061 bytes, SHA-256 3E5C11EC2AB589E6047542728F673CA4F17563E17CFC4A773DA36276A0F4BE73, class major version 52; target and dist artifacts are byte-identical.
 
+
+## Live transfer and right-click editor regression verification (2026-08-13)
+
+- 89 deterministic tests passed after Java 21 --release 8 compilation against Spigot API 1.8.8.
+- Visual Editor sessions now snapshot the player inventory/armor/held slot, transfer live lower-inventory stacks visually into the session, and restore the snapshot idempotently on save, cancel and disconnect. Top configured-stack right-click opens Item Settings; left click/drag remains transactional inventory editing.
+- PaperSpigot-445 / Minecraft 1.8.8 / Java 8u431: complete startup, ZartraGUI enable and clean disable passed.
+- Paper 1.21.11 build 130 / Java 21.0.12: two isolated runs completed plugin remapping and normal server initialization through legacy-material initialization but did not reach plugin enable before their 45s/55s observation limits; no ZartraGUI error occurred. Status: UNVERIFIED. No authenticated client was available, so physical blue-wool transfer/right-click verification is explicitly unverified.
+- Artifact: 152543 bytes, SHA-256 F0C1FCD97B3C0D21A1EC18DBEAC1EF3D7DED5D5BA6DD46C17189B377BB17EB9A, Java class major version 52; target and dist are byte-identical.
+

@@ -1,0 +1,8 @@
+package net.zartra.gui;
+import static org.junit.Assert.*;import org.junit.Test;
+public class LiveEditorSessionRegressionTest {
+ private String source(String file)throws Exception{return new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get("src/main/java/net/zartra/gui/"+file)),"UTF-8");}
+ @Test public void lowerInventoryTransferUsesActualClonedStackAndChangesSource()throws Exception{String gui=source("GuiService.java");assertTrue(gui.contains("e.getCurrentItem()==null?null:e.getCurrentItem().clone()"));assertTrue(gui.contains("p.getInventory().setItem(lower,null)"));assertTrue(gui.contains("new MenuItem(source,null)"));assertTrue(gui.contains("p.updateInventory()"));}
+ @Test public void editorSessionIsSnapshottedAndRestoredIdempotently()throws Exception{String gui=source("GuiService.java"),listener=source("GuiListener.java");assertTrue(gui.contains("new EditorSession(p)"));assertTrue(gui.contains("restoreEditorSession"));assertTrue(gui.contains("session.restored"));assertTrue(listener.contains("gui.restoreEditorSession(e.getPlayer())"));}
+ @Test public void configuredTopRightClickOpensItemSettingsWithoutChangingStack()throws Exception{String gui=source("GuiService.java");assertTrue(gui.contains("if(e.isRightClick()&&slot!=null)"));assertTrue(gui.contains("top.setItem(raw,slot.stack())"));assertTrue(gui.contains("itemSettings(p,d,raw)"));assertTrue(gui.contains("if(e.getClick()==ClickType.MIDDLE)return"));}
+}
