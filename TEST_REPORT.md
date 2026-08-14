@@ -121,3 +121,7 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 ### Runtime-material and leather-render repair (2026-08-14)
 - 120 automated tests passed, 0 failures; clean Java 8-target compilation passed. Coverage verifies authoritative serialized snapshots, no runtime shift-transfer legacy parser gate, and configured-item leather capability fallback. Physical client interaction remains externally unverified.
 
+
+### Decisive appearance path replacement (2026-08-14)
+- 120 tests passed, 0 failures; Java 8-target compilation passed. Packaged renderer contains fixed Item Appearance slot constants and unconditional Leather Color insertion. Authenticated physical click verification remains required.
+

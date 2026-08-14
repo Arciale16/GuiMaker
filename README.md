@@ -71,3 +71,7 @@ Item Appearance now reliably exposes Leather Color for all four leather armor pi
 ### Runtime material authority
 Visual-editor transfers use the exact runtime ItemStack clone; successful Bukkit serialization/deserialization remains authoritative, so current-server materials are not passed through a legacy material allowlist. Item Appearance resolves leather color capability from the configured MenuItem as well as runtime metadata.
 
+
+### Build identity and fixed appearance control
+The plugin now reports build ID 1.1.1-20260814 at startup and through /gui version. Item Appearance always renders Leather Color in fixed slot 12 between Skull and Enchantments; click-time validation opens the picker only for leather-color-capable items.
+

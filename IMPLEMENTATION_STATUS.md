@@ -72,3 +72,6 @@ Chat picker controls are served only through the hidden _zgui_picker <opaque-tok
 
 - Item Appearance now has a configured-item leather fallback in addition to runtime metadata detection. MenuItem runtime copies preserve leatherDefault; complete ItemStack snapshots stay authoritative for modern materials.
 
+
+- Replaced conditional Leather Color layout gate with unconditional fixed slot 12 renderer and shared click mapping. Added build.properties identity, startup build logging, and expanded /gui version runtime diagnostics.
+
