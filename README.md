@@ -59,3 +59,7 @@ The chat palette has Full Spectrum, hue next/previous navigation, 8x8 shade/satu
 ### RGB picker regression repair
 Chat components are delivered only through the component-aware sender; unsupported transports return safely to the inventory picker and never print component debug data. Leather preset/RGB/HEX/chat transitions keep the same provisional selection until Apply or Cancel. All destructive confirmation controls use lime/red terracotta, with legacy stained-clay or wool data values.
 
+
+### Editor reliability updates
+All confirmation screens use EMERALD for confirmation, REDSTONE for destructive/no choices, and BARRIER for a third cancel/return choice. The inventory leather picker preserves one provisional selection through page changes and modal transitions. Shift-click transfers stacks through the virtual editor transaction, including special-inventory slots, without consuming the administrator's restored inventory.
+

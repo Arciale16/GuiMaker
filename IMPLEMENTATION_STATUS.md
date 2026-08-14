@@ -63,3 +63,6 @@ Chat picker controls are served only through the hidden _zgui_picker <opaque-tok
 
 - Regression repair: removed the unsafe chat component 	oString() fallback; sender validates Player.Spigot#sendMessage(BaseComponent[]) reflectively and fails back to the inventory picker. RGB/HEX modal transitions now preserve provisional leather state. Confirmation factory covers delete and save/finish UI with LIME/RED_TERRACOTTA plus STAINED_CLAY/WOOL data fallbacks.
 
+
+- Confirmation controls standardized to EMERALD/REDSTONE/BARRIER without legacy data values. Leather picker inventory replacements now carry a transition guard so provisional state survives page/modal navigation. Virtual lower-inventory shift-click now merges/fills editor slots deterministically and reverse transfer uses the virtual player inventory.
+

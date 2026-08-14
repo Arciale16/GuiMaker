@@ -108,3 +108,8 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - PaperSpigot 1.8.8 build 445 on Java 8: this run loaded the final JAR but did not reach complete startup before the controlled stop; enablement remains UNVERIFIED in this isolated runtime.
 - No authenticated player was available; physical spectrum rendering, hover/click behavior and confirmation icons remain externally unverified.
 
+
+### Confirmation, picker state and shift-transfer repair (2026-08-14)
+- 115 automated tests passed, 0 failures; Java 8-target compilation passed. Regression coverage includes emerald/redstone confirmations, leather-picker close transition preservation, and deterministic virtual lower-to-top editor shift transfer.
+- No authenticated player was available for physical GUI interaction; this remains externally unverified.
+
