@@ -117,3 +117,7 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 ### Editor movement and leather control repair (2026-08-14)
 - 117 automated tests passed, 0 failures; clean Java 8-target build passed. Physical client interaction was not available and remains externally unverified.
 
+
+### Runtime-material and leather-render repair (2026-08-14)
+- 120 automated tests passed, 0 failures; clean Java 8-target compilation passed. Coverage verifies authoritative serialized snapshots, no runtime shift-transfer legacy parser gate, and configured-item leather capability fallback. Physical client interaction remains externally unverified.
+

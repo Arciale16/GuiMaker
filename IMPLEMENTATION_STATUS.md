@@ -69,3 +69,6 @@ Chat picker controls are served only through the hidden _zgui_picker <opaque-tok
 
 - Restored Item Appearance leather-color control: stable LeatherArmorMeta detection plus exact legacy leather-piece fallback. Added coverage for top/bottom virtual movement routes and complete leather capability.
 
+
+- Item Appearance now has a configured-item leather fallback in addition to runtime metadata detection. MenuItem runtime copies preserve leatherDefault; complete ItemStack snapshots stay authoritative for modern materials.
+

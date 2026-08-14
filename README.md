@@ -67,3 +67,7 @@ All confirmation screens use EMERALD for confirmation, REDSTONE for destructive/
 ### Leather appearance and movement repair
 Item Appearance now reliably exposes Leather Color for all four leather armor pieces, using metadata-first capability detection with an exact legacy fallback. Virtual editor movement retains complete stack metadata and supports both shift-click directions without native special-container restrictions.
 
+
+### Runtime material authority
+Visual-editor transfers use the exact runtime ItemStack clone; successful Bukkit serialization/deserialization remains authoritative, so current-server materials are not passed through a legacy material allowlist. Item Appearance resolves leather color capability from the configured MenuItem as well as runtime metadata.
+
