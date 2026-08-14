@@ -80,3 +80,7 @@ Chat picker controls are served only through the hidden _zgui_picker <opaque-tok
 ## Runtime-opaque editor item transactions
 
 The Visual Editor creates MenuItem.runtime session entries from cloned event stacks. It retains a transient runtime clone for display/movement and serializes the complete stack only when MenuStorage saves. This prevents current Paper materials from being routed through legacy resolver fallback while preserving the existing cross-version persistence fallback.
+
+## Immutable physical editor click capture
+
+Visual Editor click handling now captures the event stack and cursor clones, raw slot, clicked-inventory-relative slot and clicked-inventory identity before cancellation. Lower Shift-click transfer exclusively uses that capture and updates the player inventory with the relative bottom slot; raw view slots are never passed to PlayerInventory.

@@ -135,3 +135,14 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 
 - Final artifact: 173470 bytes; SHA-256 43CA8E16A335B93282F829F567E80DA68C290CB08256AC2F07653306AC102869; target and dist are byte-identical; ZartraGUIPlugin is class major 52.
 - Fresh isolated Paper 1.21.11 build 130 (c5a2736) on Java 21.0.12 reached complete startup, logged Build: 1.1.2-20260814, enabled ZartraGUI and reached Done without a ZartraGUI exception. The process was then stopped after the smoke observation.
+
+
+## Physical editor click-capture verification (2026-08-14)
+
+- Root cause of the reported lower_shift_rejected / null_or_air debug state: GuiService.shiftLowerToEditor read InventoryClickEvent.getCurrentItem() after the virtual handler cancelled the event. The result could already be AIR.
+- EditorClickSnapshot now captures the physical event stack/cursor and coordinates before cancellation. Lower inventory actions use captured.current and captured.slot (the clicked bottom-inventory-relative slot), not raw view coordinates.
+- 121 deterministic tests passed, 0 failures after clean Java 8-target compilation. Physical authenticated-client clicking remains externally unverified; Paper startup smoke is recorded separately.
+
+- Final build 1.1.3-20260814: target/dist are byte-identical, 175166 bytes, SHA-256 C3988CEACB1489028DB9D8CD14E6794DDC14AF3B41CBDFAADFDEC1AAD784AA2C, class major version 52.
+- PaperSpigot-445 / Minecraft 1.8.8 / Java 8u502: full startup and ZartraGUI 1.1.3 enable completed.
+- Paper 1.21.11 build 130 (c5a2736) / Java 21.0.12: full startup, Build 1.1.3-20260814, ZartraGUI enable and Done completed with no ZartraGUI exception.
