@@ -91,3 +91,13 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Paper 1.21.11 build 130 / Java 21.0.12: isolated server remapped ZartraGUI and completed normal Paper bootstrap through legacy-material initialization, but did not reach plugin enable within 58 seconds; no ZartraGUI error was logged. Status: UNVERIFIED. No authenticated client was available, so physical picker interaction remains unverified.
 - Artifact: 158377 bytes, SHA-256 988EE0A918BD5E6248C4155DEFE2B79D134F166B2841C1E680FC3547C9FEDF07, class major version 52; target and dist are byte-identical.
 
+
+- Interactive chat RGB picker: deterministic palette/session/source coverage added; physical chat-component clicking remains externally unverified without an authenticated client.
+
+
+### Interactive chat RGB picker verification (2026-08-14)
+- Automated: 105 tests passed, 0 failures; Java 21 compiler with --release 8 and the Spigot 1.8.8 API.
+- Paper 1.21.11 build 130 (c5a2736), Java 21.0.12: final JAR remapped, enabled with the internal _zgui_picker command registered, and disabled cleanly with no ZartraGUI exception.
+- PaperSpigot 1.8.8 build 445, Java 8: final JAR loaded; this isolated server did not finish world preparation before the controlled stop, so plugin enable and physical chat clicking are UNVERIFIED for this run.
+- No authenticated Minecraft client was attached; physical inventory/chat component clicking is externally unverified. Palette, token/session validation, apply/cancel state routing and persistence source paths are covered deterministically.
+

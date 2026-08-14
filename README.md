@@ -48,3 +48,10 @@ On modern Paper, a successfully restored Bukkit item snapshot is authoritative a
 
 Right-click a leather armor template, then choose **Leather Color** in Item Settings. The picker provides paginated pale/light/standard/dark/deep presets across 16 families, exact RGB (R,G,B) and HEX (#RRGGBB) entry, Reset to Default, preview, Apply and Cancel. Selections stay preview-only until Apply and are retained through save/reload along with the item’s other configuration.
 
+
+## Interactive Chat RGB Color Picker
+Leather item settings > Leather Color Picker now includes **Chat Color Picker**. It opens a clickable 30-hue spectrum and 8x8 shade palette. Modern servers display exact RGB chat colours; legacy clients receive a nearest-colour preview while the applied leather RGB stays exact. Buttons carry opaque per-player, five-minute session tokens; Apply is the only operation that creates an undo checkpoint.
+
+
+The chat palette has Full Spectrum, hue next/previous navigation, 8x8 shade/saturation selection, preview, Apply, Choose Another Color, Back to Inventory Picker, Default Leather Color, and Cancel. On 1.16+ it requests exact hex chat colours when available; on 1.8.8-1.15 clients it shows an explicitly approximate chat preview while preserving exact RGB leather metadata.
+

@@ -7,6 +7,9 @@ commands:
   zgui:
     description: ZartraGUI administration
     aliases: [zartragui, guimaker, gui]
+  _zgui_picker:
+    description: Internal secure color-picker action
+    permission: zartragui.edit
 permissions:
   zartragui.admin: {default: op}
   zartragui.create: {default: op}

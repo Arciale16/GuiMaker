@@ -54,3 +54,9 @@ Bukkit serialized snapshots are authoritative when restoration succeeds: MenuIte
 
 Item Settings now exposes Leather Color only when the item's metadata supports color. The in-game paginated picker has 80 dyed-leather preset swatches, arbitrary RGB and HEX entry, default reset, selected preview, Apply/Cancel and undo-compatible application. It stores explicit color/default state, preserves the serialized item snapshot and leaves actions, conditions and other metadata intact.
 
+
+- Interactive Chat RGB Color Picker: implemented with reflection-only component compatibility, secure per-player sessions, palette navigation, provisional selection, Apply/Cancel/back routes and legacy display fallback.
+
+
+Chat picker controls are served only through the hidden _zgui_picker <opaque-token> <bounded-action> descriptor. The token is random, expires after five minutes, is scoped to the initiating UUID, and contains no menu/slot/RGB data. Apply delegates to the existing lossless leather capture path and creates one checkpoint; navigation/cancel does not.
+
