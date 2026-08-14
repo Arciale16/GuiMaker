@@ -101,3 +101,10 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - PaperSpigot 1.8.8 build 445, Java 8: final JAR loaded; this isolated server did not finish world preparation before the controlled stop, so plugin enable and physical chat clicking are UNVERIFIED for this run.
 - No authenticated Minecraft client was attached; physical inventory/chat component clicking is externally unverified. Palette, token/session validation, apply/cancel state routing and persistence source paths are covered deterministically.
 
+
+### RGB picker regressions (2026-08-14)
+- 112 automated tests passed, 0 failures. Coverage includes component-only delivery/no debug string fallback, hover/click component construction, safe unavailable-sender return, legacy color approximation, terracotta/stained-clay/wool confirmation source paths, and provisional RGB/HEX/chat state routing.
+- Paper 1.21.11 build 130 (c5a2736) on Java 21.0.12: final artifact enabled and disabled cleanly.
+- PaperSpigot 1.8.8 build 445 on Java 8: this run loaded the final JAR but did not reach complete startup before the controlled stop; enablement remains UNVERIFIED in this isolated runtime.
+- No authenticated player was available; physical spectrum rendering, hover/click behavior and confirmation icons remain externally unverified.
+

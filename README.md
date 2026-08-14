@@ -55,3 +55,7 @@ Leather item settings > Leather Color Picker now includes **Chat Color Picker**.
 
 The chat palette has Full Spectrum, hue next/previous navigation, 8x8 shade/saturation selection, preview, Apply, Choose Another Color, Back to Inventory Picker, Default Leather Color, and Cancel. On 1.16+ it requests exact hex chat colours when available; on 1.8.8-1.15 clients it shows an explicitly approximate chat preview while preserving exact RGB leather metadata.
 
+
+### RGB picker regression repair
+Chat components are delivered only through the component-aware sender; unsupported transports return safely to the inventory picker and never print component debug data. Leather preset/RGB/HEX/chat transitions keep the same provisional selection until Apply or Cancel. All destructive confirmation controls use lime/red terracotta, with legacy stained-clay or wool data values.
+

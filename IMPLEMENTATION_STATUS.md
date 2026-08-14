@@ -60,3 +60,6 @@ Item Settings now exposes Leather Color only when the item's metadata supports c
 
 Chat picker controls are served only through the hidden _zgui_picker <opaque-token> <bounded-action> descriptor. The token is random, expires after five minutes, is scoped to the initiating UUID, and contains no menu/slot/RGB data. Apply delegates to the existing lossless leather capture path and creates one checkpoint; navigation/cancel does not.
 
+
+- Regression repair: removed the unsafe chat component 	oString() fallback; sender validates Player.Spigot#sendMessage(BaseComponent[]) reflectively and fails back to the inventory picker. RGB/HEX modal transitions now preserve provisional leather state. Confirmation factory covers delete and save/finish UI with LIME/RED_TERRACOTTA plus STAINED_CLAY/WOOL data fallbacks.
+

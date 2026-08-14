@@ -13,7 +13,7 @@ final class ZGuiCommand implements CommandExecutor,TabCompleter {
   if(a.length==0){if(!playerOnly(s))return true;gui.main((Player)s);return true;}String sub=a[0].toLowerCase(Locale.ENGLISH);
   if("help".equals(sub))return usage(s);if("version".equals(sub)){s.sendMessage("ZartraGUI 1.1.0");return true;}if("debug".equals(sub)){if(!ok(s,"debug"))return no(s);s.sendMessage("menus="+menus.all().size());return true;}
   if("list".equals(sub)||"search".equals(sub)){String q=a.length>1?a[1].toLowerCase(Locale.ENGLISH):"";for(MenuDefinition d:menus.all())if(d.id.contains(q)||d.title.toLowerCase(Locale.ENGLISH).contains(q))s.sendMessage(d.id+" - "+d.title);return true;}
-  if("reload".equals(sub)){if(!ok(s,"reload"))return no(s);plugin.reloadConfig();menus.reload();plugin.refreshAliases();plugin.inputs().clear();s.sendMessage(Chat.c("&aReloaded."));if(s instanceof Player)gui.main((Player)s);return true;}
+  if("reload".equals(sub)){if(!ok(s,"reload"))return no(s);plugin.reloadConfig();menus.reload();plugin.refreshAliases();plugin.inputs().clear();plugin.colorPicker().clearAll();gui.clearLeatherSessions();s.sendMessage(Chat.c("&aReloaded."));if(s instanceof Player)gui.main((Player)s);return true;}
   if("save".equals(sub)){if(!ok(s,"edit"))return no(s);try{menus.saveAll();s.sendMessage(Chat.c("&aSaved."));}catch(IOException e){s.sendMessage(Chat.c("&cSave failed."));}return true;}
   if("create".equals(sub)){if(!ok(s,"create"))return no(s);if(a.length<2){if(!playerOnly(s))return true;plugin.askCreate((Player)s);return true;}return create(s,a[1]);}
   if("open".equals(sub)){if(!ok(s,"open"))return no(s);MenuDefinition d=requiredMenu(s,sub,a);if(d==null)return true;if(!playerOnly(s))return true;menus.open((Player)s,d);return true;}
