@@ -113,3 +113,7 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - 115 automated tests passed, 0 failures; Java 8-target compilation passed. Regression coverage includes emerald/redstone confirmations, leather-picker close transition preservation, and deterministic virtual lower-to-top editor shift transfer.
 - No authenticated player was available for physical GUI interaction; this remains externally unverified.
 
+
+### Editor movement and leather control repair (2026-08-14)
+- 117 automated tests passed, 0 failures; clean Java 8-target build passed. Physical client interaction was not available and remains externally unverified.
+

@@ -66,3 +66,6 @@ Chat picker controls are served only through the hidden _zgui_picker <opaque-tok
 
 - Confirmation controls standardized to EMERALD/REDSTONE/BARRIER without legacy data values. Leather picker inventory replacements now carry a transition guard so provisional state survives page/modal navigation. Virtual lower-inventory shift-click now merges/fills editor slots deterministically and reverse transfer uses the virtual player inventory.
 
+
+- Restored Item Appearance leather-color control: stable LeatherArmorMeta detection plus exact legacy leather-piece fallback. Added coverage for top/bottom virtual movement routes and complete leather capability.
+

@@ -63,3 +63,7 @@ Chat components are delivered only through the component-aware sender; unsupport
 ### Editor reliability updates
 All confirmation screens use EMERALD for confirmation, REDSTONE for destructive/no choices, and BARRIER for a third cancel/return choice. The inventory leather picker preserves one provisional selection through page changes and modal transitions. Shift-click transfers stacks through the virtual editor transaction, including special-inventory slots, without consuming the administrator's restored inventory.
 
+
+### Leather appearance and movement repair
+Item Appearance now reliably exposes Leather Color for all four leather armor pieces, using metadata-first capability detection with an exact legacy fallback. Virtual editor movement retains complete stack metadata and supports both shift-click directions without native special-container restrictions.
+
