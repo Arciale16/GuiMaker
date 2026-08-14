@@ -73,5 +73,8 @@ Visual-editor transfers use the exact runtime ItemStack clone; successful Bukkit
 
 
 ### Build identity and fixed appearance control
-The plugin now reports build ID 1.1.1-20260814 at startup and through /gui version. Item Appearance always renders Leather Color in fixed slot 12 between Skull and Enchantments; click-time validation opens the picker only for leather-color-capable items.
+The plugin now reports build ID 1.1.2-20260814 at startup and through /gui version. Item Appearance always renders Leather Color in fixed slot 12 between Skull and Enchantments; click-time validation opens the picker only for leather-color-capable items.
 
+
+
+Visual Editor transfers preserve the exact cloned runtime ItemStack during an active session. Modern Paper materials are accepted without legacy name conversion; their full Bukkit serialization is written only at Save. Administrators can inspect the last editor transaction with /gui debug editor.

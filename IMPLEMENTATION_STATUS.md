@@ -75,3 +75,8 @@ Chat picker controls are served only through the hidden _zgui_picker <opaque-tok
 
 - Replaced conditional Leather Color layout gate with unconditional fixed slot 12 renderer and shared click mapping. Added build.properties identity, startup build logging, and expanded /gui version runtime diagnostics.
 
+
+
+## Runtime-opaque editor item transactions
+
+The Visual Editor creates MenuItem.runtime session entries from cloned event stacks. It retains a transient runtime clone for display/movement and serializes the complete stack only when MenuStorage saves. This prevents current Paper materials from being routed through legacy resolver fallback while preserving the existing cross-version persistence fallback.

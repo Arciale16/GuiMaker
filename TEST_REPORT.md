@@ -125,3 +125,13 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 ### Decisive appearance path replacement (2026-08-14)
 - 120 tests passed, 0 failures; Java 8-target compilation passed. Packaged renderer contains fixed Item Appearance slot constants and unconditional Leather Color insertion. Authenticated physical click verification remains required.
 
+
+
+## Runtime opaque editor transaction verification (2026-08-14)
+
+- 121 deterministic tests passed, 0 failures after a clean Java 21 --release 8 compilation against the local Spigot 1.8.8 API.
+- The physical regression branch was MenuItem.stack(): it deserialized stackSnapshot on each virtual-editor display/placement, allowing a failed legacy-era reconstruction to replace an accepted runtime stack. MenuItem.runtime now holds the event stack clone authoritatively until save; MenuStorage.writeItem serializes it only for persistence.
+- /gui debug editor reports build ID, editor session, cursor material, last clicked material, branch, acceptance/rejection, refreshed slot, session material and visible material. Authenticated physical client confirmation on Paper 1.21.11 remains externally unverified in this workspace.
+
+- Final artifact: 173470 bytes; SHA-256 43CA8E16A335B93282F829F567E80DA68C290CB08256AC2F07653306AC102869; target and dist are byte-identical; ZartraGUIPlugin is class major 52.
+- Fresh isolated Paper 1.21.11 build 130 (c5a2736) on Java 21.0.12 reached complete startup, logged Build: 1.1.2-20260814, enabled ZartraGUI and reached Done without a ZartraGUI exception. The process was then stopped after the smoke observation.
