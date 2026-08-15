@@ -146,3 +146,14 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Final build 1.1.3-20260814: target/dist are byte-identical, 175166 bytes, SHA-256 C3988CEACB1489028DB9D8CD14E6794DDC14AF3B41CBDFAADFDEC1AAD784AA2C, class major version 52.
 - PaperSpigot-445 / Minecraft 1.8.8 / Java 8u502: full startup and ZartraGUI 1.1.3 enable completed.
 - Paper 1.21.11 build 130 (c5a2736) / Java 21.0.12: full startup, Build 1.1.3-20260814, ZartraGUI enable and Done completed with no ZartraGUI exception.
+
+
+## Virtual lower-inventory transaction verification (2026-08-15)
+
+- The confirmed Paper physical debug showed clicked inventory=BOTTOM, correct slot mapping, but ventCurrent=AIR. This is expected for the protected virtual editing view and cannot be an authoritative source.
+- EditorSession now stores a deep-cloned irtualLower copy of the protected contents. Lower transactions use irtualLower(slot) first, the protected snapshot solely as preserved state, and non-AIR event current only as diagnostic fallback. Top-to-lower Shift transfer uses ddVirtualLower instead of PlayerInventory.addItem.
+- 121 deterministic tests passed, 0 failures after clean Java 8-target compilation. Authenticated physical click confirmation remains externally unverified in this workspace.
+
+- Final build 1.1.4-20260814: target/dist are byte-identical, 175989 bytes, SHA-256 6DDA55124839DEF22DDB10CF3C9DD42007FCF804B4A299424C1B1A2D95C10774, class major version 52.
+- PaperSpigot-445 / Minecraft 1.8.8 / Java 8u502: full startup and ZartraGUI 1.1.4 enable completed.
+- Paper 1.21.11 build 130 (c5a2736) / Java 21.0.12: full startup, build 1.1.4-20260814, ZartraGUI enable and Done completed without a ZartraGUI exception.

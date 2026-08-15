@@ -46,7 +46,7 @@ On modern Paper, a successfully restored Bukkit item snapshot is authoritative a
 
 ## Leather Color Picker
 
-Right-click a leather armor template, then choose **Leather Color** in Item Settings. The picker provides paginated pale/light/standard/dark/deep presets across 16 families, exact RGB (R,G,B) and HEX (#RRGGBB) entry, Reset to Default, preview, Apply and Cancel. Selections stay preview-only until Apply and are retained through save/reload along with the item’s other configuration.
+Right-click a leather armor template, then choose **Leather Color** in Item Settings. The picker provides paginated pale/light/standard/dark/deep presets across 16 families, exact RGB (R,G,B) and HEX (#RRGGBB) entry, Reset to Default, preview, Apply and Cancel. Selections stay preview-only until Apply and are retained through save/reload along with the itemï¿½s other configuration.
 
 
 ## Interactive Chat RGB Color Picker
@@ -73,10 +73,12 @@ Visual-editor transfers use the exact runtime ItemStack clone; successful Bukkit
 
 
 ### Build identity and fixed appearance control
-The plugin now reports build ID 1.1.3-20260814 at startup and through /gui version. Item Appearance always renders Leather Color in fixed slot 12 between Skull and Enchantments; click-time validation opens the picker only for leather-color-capable items.
+The plugin now reports build ID 1.1.4-20260814 at startup and through /gui version. Item Appearance always renders Leather Color in fixed slot 12 between Skull and Enchantments; click-time validation opens the picker only for leather-color-capable items.
 
 
 
 Visual Editor transfers preserve the exact cloned runtime ItemStack during an active session. Modern Paper materials are accepted without legacy name conversion; their full Bukkit serialization is written only at Save. Administrators can inspect the last editor transaction with /gui debug editor.
 
 Editor click transactions snapshot the physical event's stack, cursor, raw slot, clicked-inventory-relative slot, and source inventory before cancellation. This ensures Shift-clicks from player storage/hotbar use the actual runtime stack, not a later cleared slot. /gui debug editor exposes these immutable capture facts.
+
+The Visual Editor maintains a deep-cloned virtual lower inventory throughout each editing session. Lower clicks resolve from this session state, so a Paper event that reports AIR cannot discard a client-visible modern item; the original player snapshot is restored only when the session ends.

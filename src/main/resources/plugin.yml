@@ -1,5 +1,5 @@
 name: ZartraGUI
-version: 1.1.3
+version: 1.1.4
 main: net.zartra.gui.ZartraGUIPlugin
 authors: [Zartra]
 softdepend: [PlaceholderAPI, Vault, Multiverse-Core, HeadDatabase, PlayerPoints]
