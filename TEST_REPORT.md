@@ -176,3 +176,15 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Exact final JAR startup: PaperSpigot-445 / Minecraft 1.8.8 / Java 8u502 loaded Build 1.1.6, reached Done, and cleanly disabled with no NoSuchFieldError/NoSuchMethodError. Its legacy API does not expose PluginDescriptionFile#getAPIVersion, so diagnostics report declared API `none` and TUFF unavailable while confirming plugin operation.
 - 126 deterministic tests passed, including source/target/dist api-version package checks. Final artifacts are byte-identical: 177066 bytes; SHA-256 542396B8E9D13CE3EA9516C0D78D5AEFDD0E3598A32D1900D286AB32801CB1C6; class major version 52.
 - No authenticated player was available in the isolated servers. The classloader-level TUFF probe is verified; physical player inventory → editor click → save/reload remains externally unverified.
+
+## Paper 26.1.2 and 26.2 compatibility release (2026-08-15)
+
+- **Build:** ZartraGUI 1.1.7, Build ID `1.1.7-20260815`; one JAR with `api-version: '1.13'`, class major version 52.
+- **Deterministic suite:** 128 tests passed, 0 failures, including Paper 26 regression coverage for numeric multi-component server versions and the opt-in Bukkit main-thread command probe.
+- **PaperSpigot 1.8.8 build 445 / Temurin 8u502-b07:** plugin discovered and enabled, server reached `Done`, `zgui version` and `zgui reload` worked, and plugin/server disabled cleanly.
+- **Paper 1.21.11 build 130 (`c5a2736`) / Temurin 21.0.12+8:** plugin discovered and enabled, server reached `Done`, `zgui version` and `zgui reload` worked, modern material mode stayed disabled, and plugin/server disabled cleanly.
+- **Paper 26.1.2 build 74 (`e4e17fc`) / Temurin 25.0.4+7 x64:** plugin discovered, descriptor parsed, enabled, reached `Done`, logged `Declared API version=1.13; Legacy material mode active=false; Runtime TUFF=TUFF/TUFF/TUFF/TUFF`; the Bukkit main-thread probe returned `zgui version=true; zgui reload=true`; reload completed and shutdown disabled ZartraGUI cleanly.
+- **Paper 26.2 build 112 (`c9e894d`) / Temurin 25.0.4+7 x64:** the same lifecycle and main-thread probe passed. Direct dedicated-console commands without a slash (`zgui version`, `zgui reload`, `gui version`, `gui reload`, `stop`) also completed cleanly.
+- **External console finding:** Paper 26.1.2's piped dedicated-console bridge threw `CommandSourceStack.getLevel() == null` for a no-slash command after `Done`; its trace contains no ZartraGUI frame. The equivalent Bukkit dispatcher invocation passed, so this is recorded as a Paper console-context limitation rather than a plugin failure.
+- **Artifacts:** `target/ZartraGUI.jar` and `dist/ZartraGUI.jar` are byte-identical, 176723 bytes, SHA-256 `6BA26526F248F2D8B10699927EFF6E4C83CE502CD3B3958430F9E5753491C9DB`.
+- **Physical-client scope:** no authenticated client was attached to the isolated 26.x runtimes. Startup, descriptor, command routing, reload and material probes are runtime-tested; physical GUI clicking on 26.x remains externally unverified.

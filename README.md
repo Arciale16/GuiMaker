@@ -87,3 +87,9 @@ The Visual Editor snapshots the complete real PlayerInventory, armor, held slot 
 ZartraGUI declares `api-version: '1.13'` in its packaged `plugin.yml`. This prevents Paper 1.21.11 from classifying it as a legacy plugin and avoids pre-handler legacy material translation. The same JAR was verified to load on PaperSpigot 1.8.8, which ignores the descriptor field.
 
 Safe deployment: fully stop the server, replace `plugins/ZartraGUI.jar`, remove only Paper's cached/remapped ZartraGUI copy if that Paper build creates one, then restart. Do not use `/reload`; never delete worlds, plugin configuration, or unrelated plugin cache entries. Confirm the startup Build ID and `Declared API version=1.13; Legacy material mode active=false` before testing modern items.
+
+## Paper 26.1.2 and 26.2 support (Build 1.1.7-20260815)
+
+ZartraGUI ships one Java 8 bytecode JAR (class major version 52) and keeps `api-version: '1.13'`. It was runtime-smoke-tested on PaperSpigot 1.8.8, Paper 1.21.11, Paper 26.1.2 build 74, and Paper 26.2 build 112. On both 26.x builds it enabled without a legacy-plugin warning, kept legacy material mode disabled, and preserved `TUFF` through value lookup, item construction, cloning, and serialization.
+
+The plugin does not parse server versions by assuming a `1.x` format; compatibility is capability-oriented. An opt-in runtime probe (`-Dzartragui.runtime-probe=true`) routes `zgui version` and `zgui reload` through Bukkit's main-thread command dispatcher for isolated server verification only; it is inactive in normal deployments.

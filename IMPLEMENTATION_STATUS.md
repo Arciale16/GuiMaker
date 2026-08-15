@@ -93,3 +93,10 @@ EditorSession snapshots protected original contents, armor, held slot and cursor
 ZartraGUI declares `api-version: '1.13'` in its packaged `plugin.yml`. This prevents Paper 1.21.11 from classifying it as a legacy plugin and avoids pre-handler legacy material translation. The same JAR was verified to load on PaperSpigot 1.8.8, which ignores the descriptor field.
 
 Safe deployment: fully stop the server, replace `plugins/ZartraGUI.jar`, remove only Paper's cached/remapped ZartraGUI copy if that Paper build creates one, then restart. Do not use `/reload`; never delete worlds, plugin configuration, or unrelated plugin cache entries. Confirm the startup Build ID and `Declared API version=1.13; Legacy material mode active=false` before testing modern items.
+
+## Paper 26.x compatibility verification (Build 1.1.7-20260815)
+
+- **Implemented and runtime-tested:** Paper 26.1.2 build 74 and Paper 26.2 build 112 on Temurin 25.0.4+7 x64.
+- **Descriptor and bytecode:** one production JAR, packaged `api-version: '1.13'`, Java class major version 52, no bundled Bukkit classes.
+- **Runtime safeguards:** no source parser assumes `1.` server-version prefixes. The command smoke probe is explicitly JVM-property-gated and uses Bukkit's scheduler and dispatcher, avoiding a dependency on Paper's interactive console bridge.
+- **Result:** both 26.x servers discovered, enabled, reached `Done`, accepted `zgui version` and `zgui reload` through the Bukkit main-thread harness, and disabled cleanly. Modern material diagnostics reported legacy material mode disabled with runtime TUFF preserved.

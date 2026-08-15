@@ -1,5 +1,5 @@
 name: ZartraGUI
-version: 1.1.6
+version: 1.1.7
 main: net.zartra.gui.ZartraGUIPlugin
 api-version: '1.13'
 authors: [Zartra]
