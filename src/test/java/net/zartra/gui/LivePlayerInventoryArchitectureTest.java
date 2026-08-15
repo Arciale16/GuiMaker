@@ -1,0 +1,7 @@
+package net.zartra.gui;
+import static org.junit.Assert.*;import java.nio.file.*;import org.junit.Test;
+public class LivePlayerInventoryArchitectureTest {
+ private String source()throws Exception{return new String(Files.readAllBytes(Paths.get("src/main/java/net/zartra/gui/GuiService.java")),"UTF-8");}
+ @Test public void protectedSnapshotAndLivePlayerInventoryAreTheOnlyLowerStates()throws Exception{String s=source();assertTrue(s.contains("contents=cloneItems(p.getInventory().getContents())"));assertTrue(s.contains("armor=cloneItems(p.getInventory().getArmorContents())"));assertTrue(s.contains("cursor=p.getItemOnCursor()==null?null:p.getItemOnCursor().clone()"));assertTrue(s.contains("p.getInventory().getItem(slot)"));assertTrue(s.contains("p.getInventory().setItem(slot,item==null?null:item.clone())"));assertFalse(s.contains("virtualLower"));}
+ @Test public void creativeAndRestorationUseLiveServerState()throws Exception{String s=source();assertTrue(s.contains("void creative(InventoryCreativeEvent"));assertTrue(s.contains("e.setCancelled(true)"));assertTrue(s.contains("setLiveLower(p,e.getSlot(),stack)"));assertTrue(s.contains("p.getInventory().setContents(EditorSession.cloneItems(session.contents))"));assertTrue(s.contains("session.restored"));assertTrue(s.contains("restoredEditorSessions.add"));}
+}

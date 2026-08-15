@@ -85,6 +85,6 @@ The Visual Editor creates MenuItem.runtime session entries from cloned event sta
 
 Visual Editor click handling now captures the event stack and cursor clones, raw slot, clicked-inventory-relative slot and clicked-inventory identity before cancellation. Lower Shift-click transfer exclusively uses that capture and updates the player inventory with the relative bottom slot; raw view slots are never passed to PlayerInventory.
 
-## Virtual lower inventory authority
+## Live lower inventory authority
 
-EditorSession now retains irtualLower, an independent clone of the protected original contents. Lower-to-top, normal cursor actions, and top-to-lower Shift transfers update this virtual state first and render it to the visible session inventory. Bukkit InventoryClickEvent current-item values are diagnostic fallbacks only.
+EditorSession snapshots protected original contents, armor, held slot and cursor before opening the editor. Live PlayerInventory is the sole lower editing state; lower-to-top, normal cursor actions and top-to-lower Shift transfers mutate it directly while the snapshot remains immutable for exactly-once restoration.

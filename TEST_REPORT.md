@@ -157,3 +157,13 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - Final build 1.1.4-20260814: target/dist are byte-identical, 175989 bytes, SHA-256 6DDA55124839DEF22DDB10CF3C9DD42007FCF804B4A299424C1B1A2D95C10774, class major version 52.
 - PaperSpigot-445 / Minecraft 1.8.8 / Java 8u502: full startup and ZartraGUI 1.1.4 enable completed.
 - Paper 1.21.11 build 130 (c5a2736) / Java 21.0.12: full startup, build 1.1.4-20260814, ZartraGUI enable and Done completed without a ZartraGUI exception.
+
+
+## Live PlayerInventory editor transactions (2026-08-15)
+
+- Build 1.1.5-20260815 removes the independent virtual lower-inventory path. Editor opening deep-clones real storage, armor, held slot and cursor before the top canvas opens; lower operations read/write live Bukkit PlayerInventory and final exit restores that snapshot exactly once.
+- Creative lower edits are cancelled and immediately synchronized into the live PlayerInventory. /gui debug editor identifies player game mode, resolved PlayerInventory slot, live/protected materials, independent virtual-lower=false, and restoration state.
+- Deterministic suite: 123 tests passed, 0 failures. It verifies absence of virtualLower, deep snapshot creation, live lower reads/writes, Creative synchronization, and idempotent restoration. No authenticated client was available; physical GUI clicking and the requested server-side player/TUFF transaction harness remain externally unverified.
+- PaperSpigot-445 / Minecraft 1.8.8 / Java 8u502: final JAR loaded, Build 1.1.5-20260815 enabled, Done reached, and clean plugin/server disable logged.
+- Paper 1.21.11 build 130 (c5a2736) / Java 21.0.12: final JAR remapped/loaded, Build 1.1.5-20260815 enabled, Done reached, and clean plugin/server disable logged.
+- Final artifact: target/ZartraGUI.jar and dist/ZartraGUI.jar byte-identical; 176217 bytes; SHA-256 6F2AB8C700DB2CEABCF1FA95AABA8E065B50A8AAF4360DDA4144659696E4F1B2; ZartraGUIPlugin class major version 52.
