@@ -88,3 +88,8 @@ Visual Editor click handling now captures the event stack and cursor clones, raw
 ## Live lower inventory authority
 
 EditorSession snapshots protected original contents, armor, held slot and cursor before opening the editor. Live PlayerInventory is the sole lower editing state; lower-to-top, normal cursor actions and top-to-lower Shift transfers mutate it directly while the snapshot remains immutable for exactly-once restoration.
+## Modern Paper material-mode repair (Build 1.1.6-20260815)
+
+ZartraGUI declares `api-version: '1.13'` in its packaged `plugin.yml`. This prevents Paper 1.21.11 from classifying it as a legacy plugin and avoids pre-handler legacy material translation. The same JAR was verified to load on PaperSpigot 1.8.8, which ignores the descriptor field.
+
+Safe deployment: fully stop the server, replace `plugins/ZartraGUI.jar`, remove only Paper's cached/remapped ZartraGUI copy if that Paper build creates one, then restart. Do not use `/reload`; never delete worlds, plugin configuration, or unrelated plugin cache entries. Confirm the startup Build ID and `Declared API version=1.13; Legacy material mode active=false` before testing modern items.

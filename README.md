@@ -82,3 +82,8 @@ Visual Editor transfers preserve the exact cloned runtime ItemStack during an ac
 Editor click transactions snapshot the physical event's stack, cursor, raw slot, clicked-inventory-relative slot, and source inventory before cancellation. This ensures Shift-clicks from player storage/hotbar use the actual runtime stack, not a later cleared slot. /gui debug editor exposes these immutable capture facts.
 
 The Visual Editor snapshots the complete real PlayerInventory, armor, held slot and cursor before opening its virtual top canvas. During the session it uses the live Bukkit PlayerInventory for every lower-slot transfer, then restores the protected deep clone exactly once on final exit. No independent client-only lower inventory is retained.
+## Modern Paper material-mode repair (Build 1.1.6-20260815)
+
+ZartraGUI declares `api-version: '1.13'` in its packaged `plugin.yml`. This prevents Paper 1.21.11 from classifying it as a legacy plugin and avoids pre-handler legacy material translation. The same JAR was verified to load on PaperSpigot 1.8.8, which ignores the descriptor field.
+
+Safe deployment: fully stop the server, replace `plugins/ZartraGUI.jar`, remove only Paper's cached/remapped ZartraGUI copy if that Paper build creates one, then restart. Do not use `/reload`; never delete worlds, plugin configuration, or unrelated plugin cache entries. Confirm the startup Build ID and `Declared API version=1.13; Legacy material mode active=false` before testing modern items.

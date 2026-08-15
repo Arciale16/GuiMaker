@@ -167,3 +167,12 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - PaperSpigot-445 / Minecraft 1.8.8 / Java 8u502: final JAR loaded, Build 1.1.5-20260815 enabled, Done reached, and clean plugin/server disable logged.
 - Paper 1.21.11 build 130 (c5a2736) / Java 21.0.12: final JAR remapped/loaded, Build 1.1.5-20260815 enabled, Done reached, and clean plugin/server disable logged.
 - Final artifact: target/ZartraGUI.jar and dist/ZartraGUI.jar byte-identical; 176217 bytes; SHA-256 6F2AB8C700DB2CEABCF1FA95AABA8E065B50A8AAF4360DDA4144659696E4F1B2; ZartraGUIPlugin class major version 52.
+
+## Modern Paper legacy-material remapping repair (2026-08-15)
+
+- Root cause confirmed: Build 1.1.5 had no `api-version`; Paper 1.21.11 logged `Legacy plugin ZartraGUI v1.1.5 does not specify an api-version` and initialized `CraftLegacy` before plugin enable.
+- Build 1.1.6 packages `api-version: '1.13'` in source, target, and dist descriptors. Final Paper 1.21.11 build 130 / Java 21.0.12 logs no ZartraGUI legacy-plugin warning and no CraftLegacy initialization. It logs `Declared API version=1.13; Legacy material mode active=false; Runtime TUFF=TUFF/TUFF/TUFF/TUFF` from ZartraGUI's own classloader; the four values verify Material.valueOf, ItemStack type, clone type, and serialize/deserialize type.
+- Direct bytecode audit: GuiService has no direct `org/bukkit/Material` Fieldref entries. Legacy-only GUI constants were replaced with CompatMaterial runtime-name resolution; the remaining production direct fields are cross-version AIR, BARRIER, PAPER, and STONE only.
+- Exact final JAR startup: PaperSpigot-445 / Minecraft 1.8.8 / Java 8u502 loaded Build 1.1.6, reached Done, and cleanly disabled with no NoSuchFieldError/NoSuchMethodError. Its legacy API does not expose PluginDescriptionFile#getAPIVersion, so diagnostics report declared API `none` and TUFF unavailable while confirming plugin operation.
+- 126 deterministic tests passed, including source/target/dist api-version package checks. Final artifacts are byte-identical: 177066 bytes; SHA-256 542396B8E9D13CE3EA9516C0D78D5AEFDD0E3598A32D1900D286AB32801CB1C6; class major version 52.
+- No authenticated player was available in the isolated servers. The classloader-level TUFF probe is verified; physical player inventory → editor click → save/reload remains externally unverified.
