@@ -1,8 +1,16 @@
+# ZartraGUI global defaults. Change values here; /zgui reload applies supported settings.
+# Chat-input session timeout in seconds. Default: 60.
 chat-input-timeout-seconds: 60
+# Language resource suffix (messages_<language>.yml). Default: en. Reload required.
 default-language: en
+# Maximum actions stored on one item. Default: 32.
 max-actions-per-item: 32
+# Maximum nested action-chain depth. Default: 64.
 max-action-chain-depth: 64
+# Maximum lore lines accepted by the editor. Default: 100.
 max-lore-lines: 100
+# Minimum scheduled menu-refresh interval in ticks. Default: 20.
 minimum-refresh-interval: 20
-# Optional value used by the %server% placeholder; blank uses the compatible server-name resolver.
+# Optional %server% placeholder value. Blank uses the compatible server-name resolver.
+# Default: blank. Reload required.
 server-name: ''

@@ -93,3 +93,9 @@ Safe deployment: fully stop the server, replace `plugins/ZartraGUI.jar`, remove 
 ZartraGUI ships one Java 8 bytecode JAR (class major version 52) and keeps `api-version: '1.13'`. It was runtime-smoke-tested on PaperSpigot 1.8.8, Paper 1.21.11, Paper 26.1.2 build 74, and Paper 26.2 build 112. On both 26.x builds it enabled without a legacy-plugin warning, kept legacy material mode disabled, and preserved `TUFF` through value lookup, item construction, cloning, and serialization.
 
 The plugin does not parse server versions by assuming a `1.x` format; compatibility is capability-oriented. An opt-in runtime probe (`-Dzartragui.runtime-probe=true`) routes `zgui version` and `zgui reload` through Bukkit's main-thread command dispatcher for isolated server verification only; it is inactive in normal deployments.
+
+## Public 1.0.0 release
+
+ZartraGUI 1.0.0 (`1.0.0-20260816`) is the first public stable release. One Java-8-bytecode JAR targets Paper/Spigot 1.8.8–26.2; use the Java runtime required by your server. `build.ps1` is the authoritative build and embeds every `src/main/resources/**` file. On first startup it generates `config.yml` and `messages.yml` without overwriting existing user files.
+
+Internal 1.1.7/1.1.8 candidates are withdrawn: their former custom packaging path omitted mandatory resources. The 1.0.0 artifact has 129 passing automated tests and verified root resources. Full final runtime/physical-client matrix verification was waived for this release; report reproducible issues with the [bug report template](.github/ISSUE_TEMPLATE/bug_report.yml), removing secrets and private information.

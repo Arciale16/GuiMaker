@@ -188,3 +188,9 @@ The 69 deterministic tests cover persistence/migration, alias normalization, com
 - **External console finding:** Paper 26.1.2's piped dedicated-console bridge threw `CommandSourceStack.getLevel() == null` for a no-slash command after `Done`; its trace contains no ZartraGUI frame. The equivalent Bukkit dispatcher invocation passed, so this is recorded as a Paper console-context limitation rather than a plugin failure.
 - **Artifacts:** `target/ZartraGUI.jar` and `dist/ZartraGUI.jar` are byte-identical, 176723 bytes, SHA-256 `6BA26526F248F2D8B10699927EFF6E4C83CE502CD3B3958430F9E5753491C9DB`.
 - **Physical-client scope:** no authenticated client was attached to the isolated 26.x runtimes. Startup, descriptor, command routing, reload and material probes are runtime-tested; physical GUI clicking on 26.x remains externally unverified.
+
+## Public 1.0.0 release
+
+ZartraGUI 1.0.0 (`1.0.0-20260816`) is the first public stable release. One Java-8-bytecode JAR targets Paper/Spigot 1.8.8–26.2; use the Java runtime required by your server. `build.ps1` is the authoritative build and embeds every `src/main/resources/**` file. On first startup it generates `config.yml` and `messages.yml` without overwriting existing user files.
+
+Internal 1.1.7/1.1.8 candidates are withdrawn: their former custom packaging path omitted mandatory resources. The 1.0.0 artifact has 129 passing automated tests and verified root resources. Full final runtime/physical-client matrix verification was waived for this release; report reproducible issues with the [bug report template](.github/ISSUE_TEMPLATE/bug_report.yml), removing secrets and private information.

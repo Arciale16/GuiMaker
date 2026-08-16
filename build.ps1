@@ -1,0 +1,7 @@
+param([switch]$SkipTests)
+$ErrorActionPreference='Stop'
+$classes='target/current-classes';$tests='target/current-test-classes';$api='target-legacy-backup/spigot-api-1.8.8.jar';$junit="$env:USERPROFILE/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar";$hamcrest="$env:USERPROFILE/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar";$guava="$env:USERPROFILE/.m2/repository/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar";$lang="$env:USERPROFILE/.m2/repository/commons-lang/commons-lang/2.1/commons-lang-2.1.jar";$yaml='target/snakeyaml-1.16.jar'
+Remove-Item $classes,$tests -Recurse -Force -ErrorAction SilentlyContinue;New-Item -ItemType Directory -Force $classes,$tests|Out-Null
+javac --release 8 -encoding UTF-8 -cp $api -d $classes (Get-ChildItem src/main/java -Recurse -Filter *.java|% FullName);if($LASTEXITCODE){exit $LASTEXITCODE};Copy-Item 'src/main/resources/*' $classes -Recurse -Force
+javac --release 8 -encoding UTF-8 -cp "$classes;$api;$junit;$hamcrest;$yaml" -d $tests (Get-ChildItem src/test/java -Recurse -Filter *.java|% FullName);if($LASTEXITCODE){exit $LASTEXITCODE};jar cf target/ZartraGUI.jar -C $classes .;Copy-Item target/ZartraGUI.jar dist/ZartraGUI.jar -Force
+if(!$SkipTests){$all=Get-ChildItem src/test/java -Recurse -Filter *Test.java|%{'net.zartra.gui.'+$_.BaseName};java -cp "$classes;$tests;$api;$junit;$hamcrest;$guava;$yaml;$lang" org.junit.runner.JUnitCore $all;if($LASTEXITCODE){exit $LASTEXITCODE}}

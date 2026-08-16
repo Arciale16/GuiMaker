@@ -1,0 +1,8 @@
+package net.zartra.gui;
+import static org.junit.Assert.*;import java.io.*;import java.util.*;import java.util.jar.*;import org.junit.Test;import org.yaml.snakeyaml.Yaml;
+public class PackagedResourceTest {
+ private static final String[] REQUIRED={"plugin.yml","config.yml","build.properties","messages.yml"};
+ @Test public void bothReleaseJarsPackageParseableDefaultResources()throws Exception{check(new File("target/ZartraGUI.jar"));check(new File("dist/ZartraGUI.jar"));}
+ private void check(File file)throws Exception{assertTrue(file+" missing",file.isFile());JarFile jar=new JarFile(file);try{for(String name:REQUIRED)assertNotNull(file+" missing "+name,jar.getJarEntry(name));InputStream in=jar.getInputStream(jar.getJarEntry("config.yml"));byte[] bytes=read(in);assertTrue("empty config",bytes.length>50);String text=new String(bytes,"UTF-8");assertFalse("test path leaked",text.contains("C:\\\\"));Object parsed=new Yaml().load(text);assertTrue(parsed instanceof Map);Map map=(Map)parsed;for(String key:new String[]{"chat-input-timeout-seconds","default-language","max-actions-per-item","max-action-chain-depth","max-lore-lines","minimum-refresh-interval","server-name"})assertTrue("missing "+key,map.containsKey(key));}finally{jar.close();}}
+ private byte[] read(InputStream in)throws IOException{ByteArrayOutputStream out=new ByteArrayOutputStream();byte[] b=new byte[1024];for(int n;(n=in.read(b))>=0;)out.write(b,0,n);return out.toByteArray();}
+}

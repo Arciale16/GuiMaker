@@ -1,0 +1,24 @@
+name: Bug report
+about: Report a reproducible ZartraGUI issue
+labels: bug
+body:
+  - type: input
+    attributes: {label: ZartraGUI version and Build ID}
+  - type: input
+    attributes: {label: Minecraft, server software and exact build}
+  - type: input
+    attributes: {label: Exact Java version}
+  - type: dropdown
+    attributes: {label: Installation type, options: [Clean install, Upgrade]}
+  - type: textarea
+    attributes: {label: Installed plugins/integrations and reproduction steps}
+  - type: textarea
+    attributes: {label: Expected and actual behavior}
+  - type: textarea
+    attributes: {label: Relevant console log or stack trace, description: Remove IPs, tokens and secrets.}
+  - type: textarea
+    attributes: {label: Sanitized config.yml/messages.yml, description: Remove secrets and private data.}
+  - type: dropdown
+    attributes: {label: Reproduces without optional integrations, options: [Yes, No, Not tested]}
+  - type: textarea
+    attributes: {label: Screenshots or video, description: Optional.}

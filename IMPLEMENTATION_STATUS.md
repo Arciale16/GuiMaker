@@ -100,3 +100,9 @@ Safe deployment: fully stop the server, replace `plugins/ZartraGUI.jar`, remove 
 - **Descriptor and bytecode:** one production JAR, packaged `api-version: '1.13'`, Java class major version 52, no bundled Bukkit classes.
 - **Runtime safeguards:** no source parser assumes `1.` server-version prefixes. The command smoke probe is explicitly JVM-property-gated and uses Bukkit's scheduler and dispatcher, avoiding a dependency on Paper's interactive console bridge.
 - **Result:** both 26.x servers discovered, enabled, reached `Done`, accepted `zgui version` and `zgui reload` through the Bukkit main-thread harness, and disabled cleanly. Modern material diagnostics reported legacy material mode disabled with runtime TUFF preserved.
+
+## Public 1.0.0 release
+
+ZartraGUI 1.0.0 (`1.0.0-20260816`) is the first public stable release. One Java-8-bytecode JAR targets Paper/Spigot 1.8.8–26.2; use the Java runtime required by your server. `build.ps1` is the authoritative build and embeds every `src/main/resources/**` file. On first startup it generates `config.yml` and `messages.yml` without overwriting existing user files.
+
+Internal 1.1.7/1.1.8 candidates are withdrawn: their former custom packaging path omitted mandatory resources. The 1.0.0 artifact has 129 passing automated tests and verified root resources. Full final runtime/physical-client matrix verification was waived for this release; report reproducible issues with the [bug report template](.github/ISSUE_TEMPLATE/bug_report.yml), removing secrets and private information.
